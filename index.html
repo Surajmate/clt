@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Codelaunch Technologies - Digital engineering, enterprise integration, cloud platforms, AI and automation.">
-  <title>Codelaunch Technologies</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+      content="Codelaunch Technologies - Digital engineering, enterprise integration, cloud platforms, AI and automation.">
+    <title>Codelaunch Technologies</title>
+    <!-- Favivon -->
+    <link rel="icon" type="image/png" href="logo.png">
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
     tailwind.config = {
       theme: {
         extend: {
@@ -18,781 +21,1402 @@
     };
   </script>
 
-  <!-- Lucide icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-  <style>
+    <style>
     html { scroll-behavior: smooth; }
     body { margin: 0; }
     button, a { -webkit-tap-highlight-color: transparent; }
   </style>
-</head>
+  </head>
 
-<body class="bg-[#050816] text-white">
+  <body class="bg-[#050816] text-white">
 
-<main class="min-h-screen overflow-x-hidden bg-[#050816] text-white">
+    <main class="min-h-screen overflow-x-hidden bg-[#050816] text-white">
 
-  <!-- ================================================================ -->
-  <!-- NAVBAR -->
-  <!-- ================================================================ -->
+      <!-- ================================================================ -->
+      <!-- NAVBAR -->
+      <!-- ================================================================ -->
 
-  <header class="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#050816]/85 backdrop-blur-xl">
-    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+      <header
+        class="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#050816]/85 backdrop-blur-xl">
+        <div
+          class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
 
-      <button type="button" onclick="scrollToSection('home')" class="flex items-center gap-3">
-        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-black">
-          <i data-lucide="code-2" class="h-[22px] w-[22px]"></i>
-        </div>
-        <div class="text-left">
-          <div class="text-lg font-bold tracking-tight">Codelaunch</div>
-          <div class="text-[10px] uppercase tracking-[0.25em] text-white/50">Technologies</div>
-        </div>
-      </button>
-
-      <!-- DESKTOP NAV -->
-      <nav class="hidden items-center gap-7 md:flex">
-        <button onclick="scrollToSection('solutions')" class="text-sm text-white/70 transition hover:text-white">Solutions</button>
-        <button onclick="scrollToSection('services')" class="text-sm text-white/70 transition hover:text-white">Services</button>
-        <button onclick="scrollToSection('aidlc')" class="text-sm text-white/70 transition hover:text-white">AIDLC</button>
-        <button onclick="scrollToSection('technology')" class="text-sm text-white/70 transition hover:text-white">Technology</button>
-        <button onclick="scrollToSection('team')" class="text-sm text-white/70 transition hover:text-white">Team</button>
-
-        <a href="/certificate/verify" class="flex items-center gap-1.5 text-sm text-white/70 transition hover:text-white">
-          <i data-lucide="award" class="h-[15px] w-[15px]"></i> Verify
-        </a>
-
-        <button onclick="openAuth('signup')" class="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-white/90">
-          Register
-        </button>
-      </nav>
-
-      <!-- MOBILE MENU BUTTON -->
-      <button type="button" aria-label="Open menu" onclick="toggleMobileMenu()"
-        class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 md:hidden">
-        <i id="mobile-menu-icon" data-lucide="menu" class="h-5 w-5"></i>
-      </button>
-    </div>
-
-    <!-- MOBILE MENU -->
-    <div id="mobile-menu" class="hidden border-t border-white/10 bg-[#050816] md:hidden">
-      <div class="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-5 sm:px-6">
-        <button onclick="scrollToSection('solutions')" class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Solutions</button>
-        <button onclick="scrollToSection('services')" class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Services</button>
-        <button onclick="scrollToSection('aidlc')" class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">AIDLC</button>
-        <button onclick="scrollToSection('technology')" class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Technology</button>
-        <button onclick="scrollToSection('team')" class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Team</button>
-        <button onclick="scrollToSection('about')" class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">About</button>
-
-        <a href="/certificate/verify" onclick="closeMobileMenu()" class="flex items-center gap-2 rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">
-          <i data-lucide="award" class="h-4 w-4"></i> Verify Certificate
-        </a>
-
-        <div class="mt-3 grid grid-cols-2 gap-3 border-t border-white/10 pt-5">
-          <button onclick="openAuth('login')" class="rounded-lg border border-white/10 py-3 text-sm">Login</button>
-          <button onclick="openAuth('signup')" class="rounded-lg bg-white py-3 text-sm font-semibold text-black">Get Started</button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ================================================================ -->
-  <!-- HERO -->
-  <!-- ================================================================ -->
-
-  <section id="home" class="relative flex min-h-screen items-center overflow-hidden pt-20">
-    <div class="absolute left-1/2 top-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-purple-600/10 blur-[120px]"></div>
-    <div class="absolute right-0 top-20 h-[400px] w-[400px] rounded-full bg-blue-600/10 blur-[120px]"></div>
-
-    <div class="relative mx-auto grid w-full max-w-7xl items-center gap-16 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-2 lg:px-8">
-
-      <div>
-        <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/70">
-          <i data-lucide="sparkles" class="h-[14px] w-[14px]"></i>
-          Engineering the digital future
-        </div>
-
-        <h1 class="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-          Build.<br>
-          Integrate.<br>
-          <span class="text-white/40">Scale.</span>
-        </h1>
-
-        <p class="mt-8 max-w-xl text-base leading-8 text-white/60 sm:text-lg">
-          Codelaunch Technologies builds scalable digital products,
-          enterprise integrations, cloud platforms and intelligent
-          automation for businesses ready to move faster.
-        </p>
-
-        <div class="mt-10 flex flex-col gap-4 sm:flex-row">
-          <button onclick="scrollToSection('services')" class="group flex items-center justify-center gap-3 rounded-xl bg-white px-7 py-4 font-semibold text-black transition hover:bg-white/90">
-            Start a Project
-            <i data-lucide="arrow-right" class="h-[18px] w-[18px] transition-transform group-hover:translate-x-1"></i>
+          <button type="button" onclick="scrollToSection('home')"
+            class="flex items-center gap-3">
+            <div
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-black">
+              <i data-lucide="code-2" class="h-[22px] w-[22px]"></i>
+            </div>
+            <div class="text-left">
+              <div class="text-lg font-bold tracking-tight">Codelaunch</div>
+              <div
+                class="text-[10px] uppercase tracking-[0.25em] text-white/50">Technologies</div>
+            </div>
           </button>
 
-          <a href="/certificate/verify" class="flex items-center justify-center gap-2 rounded-xl border border-white/15 px-7 py-4 font-medium text-white transition hover:bg-white/5">
-            <i data-lucide="award" class="h-[18px] w-[18px]"></i>
-            Verify Certificate
-          </a>
+          <!-- DESKTOP NAV -->
+          <nav class="hidden items-center gap-7 md:flex">
+            <button onclick="scrollToSection('solutions')"
+              class="text-sm text-white/70 transition hover:text-white">Solutions</button>
+            <button onclick="scrollToSection('services')"
+              class="text-sm text-white/70 transition hover:text-white">Services</button>
+            <button onclick="scrollToSection('aidlc')"
+              class="text-sm text-white/70 transition hover:text-white">AIDLC</button>
+            <button onclick="scrollToSection('technology')"
+              class="text-sm text-white/70 transition hover:text-white">Technology</button>
+            <button onclick="scrollToSection('team')"
+              class="text-sm text-white/70 transition hover:text-white">Team</button>
+
+            <!-- <a href="/certificate/verify"
+              class="flex items-center gap-1.5 text-sm text-white/70 transition hover:text-white">
+              <i data-lucide="award" class="h-[15px] w-[15px]"></i> Verify
+            </a> -->
+
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank"
+              class="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-white/90">
+              Register for MERN Stack
+            </a>
+          </nav>
+
+          <!-- MOBILE MENU BUTTON -->
+          <button type="button" aria-label="Open menu"
+            onclick="toggleMobileMenu()"
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 md:hidden">
+            <i id="mobile-menu-icon" data-lucide="menu" class="h-5 w-5"></i>
+          </button>
         </div>
 
-        <div class="mt-12 flex flex-wrap gap-x-8 gap-y-4 text-sm text-white/40">
-          <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="h-4 w-4"></i> Enterprise Ready</div>
-          <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="h-4 w-4"></i> API First</div>
-          <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="h-4 w-4"></i> AI Enabled</div>
-        </div>
-      </div>
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu"
+          class="hidden border-t border-white/10 bg-[#050816] md:hidden">
+          <div class="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-5 sm:px-6">
+            <button onclick="scrollToSection('solutions')"
+              class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Solutions</button>
+            <button onclick="scrollToSection('services')"
+              class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Services</button>
+            <button onclick="scrollToSection('aidlc')"
+              class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">AIDLC</button>
+            <button onclick="scrollToSection('technology')"
+              class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Technology</button>
+            <button onclick="scrollToSection('team')"
+              class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Team</button>
+            <button onclick="scrollToSection('about')"
+              class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">About</button>
 
-      <!-- HERO VISUAL -->
-      <div class="relative hidden min-h-[500px] items-center justify-center lg:flex">
-        <div class="absolute h-[360px] w-[360px] rounded-full border border-white/10"></div>
-        <div class="absolute h-[460px] w-[460px] rounded-full border border-white/5"></div>
+            <!-- <a href="/certificate/verify" onclick="closeMobileMenu()"
+              class="flex items-center gap-2 rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">
+              <i data-lucide="award" class="h-4 w-4"></i> Verify Certificate
+            </a> -->
 
-        <div class="relative flex h-48 w-48 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl">
-          <div class="flex h-24 w-24 items-center justify-center rounded-2xl bg-white text-black">
-            <i data-lucide="code-2" class="h-12 w-12"></i>
+            <!-- <div
+              class="mt-3 grid grid-cols-2 gap-3 border-t border-white/10 pt-5">
+              <button onclick="openAuth('login')"
+                class="rounded-lg border border-white/10 py-3 text-sm">Login</button>
+              <button onclick="openAuth('signup')"
+                class="rounded-lg bg-white py-3 text-sm font-semibold text-black">Get
+                Started</button>
+            </div> -->
           </div>
         </div>
+      </header>
 
-        <div class="absolute -left-2 top-20 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
-          <i data-lucide="code-2" class="h-4 w-4 text-white/70"></i><span class="text-sm text-white/70">Engineering</span>
-        </div>
+      <!-- ================================================================ -->
+      <!-- HERO -->
+      <!-- ================================================================ -->
 
-        <div class="absolute -right-2 top-32 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
-          <i data-lucide="network" class="h-4 w-4 text-white/70"></i><span class="text-sm text-white/70">Integration</span>
-        </div>
+      <section id="home"
+        class="relative flex min-h-screen items-center overflow-hidden pt-20">
+        <div
+          class="absolute left-1/2 top-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-purple-600/10 blur-[120px]"></div>
+        <div
+          class="absolute right-0 top-20 h-[400px] w-[400px] rounded-full bg-blue-600/10 blur-[120px]"></div>
 
-        <div class="absolute bottom-24 left-8 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
-          <i data-lucide="cloud" class="h-4 w-4 text-white/70"></i><span class="text-sm text-white/70">Cloud</span>
-        </div>
+        <div
+          class="relative mx-auto grid w-full max-w-7xl items-center gap-16 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-2 lg:px-8">
 
-        <div class="absolute bottom-12 right-10 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
-          <i data-lucide="brain-circuit" class="h-4 w-4 text-white/70"></i><span class="text-sm text-white/70">AI Agents</span>
-        </div>
-
-        <div class="absolute left-1/2 top-2 flex -translate-x-1/2 items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
-          <i data-lucide="workflow" class="h-4 w-4 text-white/70"></i><span class="text-sm text-white/70">AIDLC</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================ -->
-  <!-- SOLUTIONS -->
-  <!-- ================================================================ -->
-
-  <section id="solutions" class="scroll-mt-20 px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
-    <div class="mx-auto max-w-7xl">
-      <div class="max-w-3xl">
-        <div class="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/35">SOLUTIONS</div>
-        <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">Technology that solves real business problems.</h2>
-        <p class="mt-6 text-base leading-8 text-white/50 sm:text-lg">
-          From digital products to enterprise integrations and intelligent automation, we design solutions around measurable outcomes.
-        </p>
-      </div>
-
-      <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-
-        <div class="group rounded-2xl border border-white/10 bg-white/[0.025] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
-          <div class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="code-2"></i></div>
-          <h3 class="text-xl font-semibold">Digital Products</h3>
-          <p class="mt-4 text-sm leading-7 text-white/45">Modern web applications and platforms designed for performance, maintainability and scale.</p>
-          <div class="mt-7 flex items-center gap-2 text-sm text-white/40 transition group-hover:text-white">Explore <i data-lucide="arrow-right" class="h-[15px] w-[15px]"></i></div>
-        </div>
-
-        <div class="group rounded-2xl border border-white/10 bg-white/[0.025] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
-          <div class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="network"></i></div>
-          <h3 class="text-xl font-semibold">Enterprise Integration</h3>
-          <p class="mt-4 text-sm leading-7 text-white/45">Connect applications, APIs, databases and enterprise platforms through scalable integration architecture.</p>
-          <div class="mt-7 flex items-center gap-2 text-sm text-white/40 transition group-hover:text-white">Explore <i data-lucide="arrow-right" class="h-[15px] w-[15px]"></i></div>
-        </div>
-
-        <div class="group rounded-2xl border border-white/10 bg-white/[0.025] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
-          <div class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="cloud"></i></div>
-          <h3 class="text-xl font-semibold">Cloud Platforms</h3>
-          <p class="mt-4 text-sm leading-7 text-white/45">Cloud-native infrastructure, DevOps and deployment strategies designed for reliable growth.</p>
-          <div class="mt-7 flex items-center gap-2 text-sm text-white/40 transition group-hover:text-white">Explore <i data-lucide="arrow-right" class="h-[15px] w-[15px]"></i></div>
-        </div>
-
-        <div class="group rounded-2xl border border-white/10 bg-white/[0.025] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
-          <div class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="bot"></i></div>
-          <h3 class="text-xl font-semibold">AI & Automation</h3>
-          <p class="mt-4 text-sm leading-7 text-white/45">AI-powered workflows, intelligent agents and automation that reduce manual effort and accelerate delivery.</p>
-          <div class="mt-7 flex items-center gap-2 text-sm text-white/40 transition group-hover:text-white">Explore <i data-lucide="arrow-right" class="h-[15px] w-[15px]"></i></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================ -->
-  <!-- AIDLC -->
-  <!-- ================================================================ -->
-
-  <section id="aidlc" class="scroll-mt-20 border-y border-white/10 bg-white/[0.02] px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
-    <div class="mx-auto max-w-7xl">
-
-      <div class="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div>
-          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
-            <i data-lucide="sparkles" class="h-[14px] w-[14px]"></i>AIDLC
-          </div>
-
-          <h2 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            AI Development<br><span class="text-white/40">Lifecycle.</span>
-          </h2>
-
-          <p class="mt-7 max-w-2xl text-base leading-8 text-white/50 sm:text-lg">
-            Transform requirements into production-ready software using AI agents across the complete development lifecycle.
-          </p>
-
-          <p class="mt-5 max-w-2xl text-sm leading-7 text-white/35">
-            Capture requirements from email, WhatsApp or messages. Let AI agents assist with implementation, testing,
-            governance and CI/CD — while keeping human approval at critical production gates.
-          </p>
-
-          <div class="mt-9 flex flex-col gap-4 sm:flex-row">
-            <button onclick="scrollToSection('contact')" class="group flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:bg-white/90">
-              Discuss AIDLC <i data-lucide="arrow-right" class="h-[17px] w-[17px] transition-transform group-hover:translate-x-1"></i>
-            </button>
-            <button onclick="openWhatsApp()" class="flex items-center justify-center gap-2 rounded-xl border border-white/10 px-6 py-3.5 text-sm font-medium text-white/70 transition hover:bg-white/5 hover:text-white">
-              <i data-lucide="message-circle" class="h-[17px] w-[17px]"></i>Talk on WhatsApp
-            </button>
-          </div>
-        </div>
-
-        <div class="relative">
-          <div class="rounded-3xl border border-white/10 bg-[#080c1a] p-5 shadow-2xl sm:p-7">
-            <div class="mb-6 flex items-center justify-between">
-              <div>
-                <div class="text-xs uppercase tracking-[0.2em] text-white/30">AI Engineering Pipeline</div>
-                <div class="mt-2 text-lg font-semibold">From requirement to release</div>
-              </div>
-              <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5"><i data-lucide="workflow" class="h-[18px] w-[18px]"></i></div>
-            </div>
-
-            <div class="space-y-3">
-              <div class="relative flex gap-4">
-                <div class="absolute bottom-[-12px] left-[17px] top-[42px] w-px bg-white/10"></div>
-                <div class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i data-lucide="mail" class="h-4 w-4"></i></div>
-                <div class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div class="flex items-center gap-2"><span class="text-[10px] text-white/20">01</span><span class="text-sm font-semibold">Capture</span></div><span class="text-[10px] text-white/30 sm:text-right">Email · WhatsApp · Messages</span></div></div>
-              </div>
-              <div class="relative flex gap-4">
-                <div class="absolute bottom-[-12px] left-[17px] top-[42px] w-px bg-white/10"></div>
-                <div class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i data-lucide="brain-circuit" class="h-4 w-4"></i></div>
-                <div class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div class="flex items-center gap-2"><span class="text-[10px] text-white/20">02</span><span class="text-sm font-semibold">Analyze</span></div><span class="text-[10px] text-white/30 sm:text-right">Requirements · Impact · Planning</span></div></div>
-              </div>
-              <div class="relative flex gap-4">
-                <div class="absolute bottom-[-12px] left-[17px] top-[42px] w-px bg-white/10"></div>
-                <div class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i data-lucide="code-2" class="h-4 w-4"></i></div>
-                <div class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div class="flex items-center gap-2"><span class="text-[10px] text-white/20">03</span><span class="text-sm font-semibold">Develop</span></div><span class="text-[10px] text-white/30 sm:text-right">New implementation · Enhancements</span></div></div>
-              </div>
-              <div class="relative flex gap-4">
-                <div class="absolute bottom-[-12px] left-[17px] top-[42px] w-px bg-white/10"></div>
-                <div class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i data-lucide="check-circle-2" class="h-4 w-4"></i></div>
-                <div class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div class="flex items-center gap-2"><span class="text-[10px] text-white/20">04</span><span class="text-sm font-semibold">Test</span></div><span class="text-[10px] text-white/30 sm:text-right">Unit · Integration · Regression</span></div></div>
-              </div>
-              <div class="relative flex gap-4">
-                <div class="absolute bottom-[-12px] left-[17px] top-[42px] w-px bg-white/10"></div>
-                <div class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i data-lucide="shield-check" class="h-4 w-4"></i></div>
-                <div class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div class="flex items-center gap-2"><span class="text-[10px] text-white/20">05</span><span class="text-sm font-semibold">Govern</span></div><span class="text-[10px] text-white/30 sm:text-right">Quality · Security · Rules</span></div></div>
-              </div>
-              <div class="relative flex gap-4">
-                <div class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i data-lucide="rocket" class="h-4 w-4"></i></div>
-                <div class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div class="flex items-center gap-2"><span class="text-[10px] text-white/20">06</span><span class="text-sm font-semibold">Deploy</span></div><span class="text-[10px] text-white/30 sm:text-right">CI/CD · Approval · Production</span></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-5"><div class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/60"><i data-lucide="bot"></i></div><h3 class="mt-5 font-semibold">AI Agents</h3><p class="mt-2 text-xs leading-6 text-white/35">Agents assist across development and delivery workflows.</p></div>
-        <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-5"><div class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/60"><i data-lucide="network"></i></div><h3 class="mt-5 font-semibold">Existing Systems</h3><p class="mt-2 text-xs leading-6 text-white/35">Enhance existing applications instead of starting from zero.</p></div>
-        <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-5"><div class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/60"><i data-lucide="shield-check"></i></div><h3 class="mt-5 font-semibold">Governance</h3><p class="mt-2 text-xs leading-6 text-white/35">Apply quality, security and deployment rules automatically.</p></div>
-        <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-5"><div class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/60"><i data-lucide="rocket"></i></div><h3 class="mt-5 font-semibold">CI/CD</h3><p class="mt-2 text-xs leading-6 text-white/35">Automate build, test and deployment pipelines with controlled releases.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================ -->
-  <!-- SERVICES -->
-  <!-- ================================================================ -->
-
-  <section id="services" class="scroll-mt-20 px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
-    <div class="mx-auto max-w-7xl">
-      <div class="max-w-3xl">
-        <div class="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/35">SERVICES</div>
-        <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">Engineering capabilities built for scale.</h2>
-        <p class="mt-6 text-base leading-8 text-white/50 sm:text-lg">End-to-end technology services covering product engineering, integration, cloud, data, AI and reliability.</p>
-      </div>
-
-      <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-
-        <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
-          <div class="flex items-start justify-between"><div class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="code-2"></i></div><span class="text-xs font-medium text-white/20">01</span></div>
-          <h3 class="mt-8 text-xl font-semibold">Product Engineering</h3>
-          <div class="mt-6 space-y-3">
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Full-stack development</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Web applications</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Enterprise platforms</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>API development</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Modernization</div>
-          </div>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
-          <div class="flex items-start justify-between"><div class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="network"></i></div><span class="text-xs font-medium text-white/20">02</span></div>
-          <h3 class="mt-8 text-xl font-semibold">Integration Engineering</h3>
-          <div class="mt-6 space-y-3">
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>API-led integration</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>MuleSoft</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Apigee</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Azure APIM</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>System integration</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Event-driven architecture</div>
-          </div>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
-          <div class="flex items-start justify-between"><div class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="cloud"></i></div><span class="text-xs font-medium text-white/20">03</span></div>
-          <h3 class="mt-8 text-xl font-semibold">Cloud & DevOps</h3>
-          <div class="mt-6 space-y-3">
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>AWS & Azure</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Docker</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Kubernetes</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Jenkins</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>CI/CD pipelines</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Cloud-native architecture</div>
-          </div>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
-          <div class="flex items-start justify-between"><div class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="database"></i></div><span class="text-xs font-medium text-white/20">04</span></div>
-          <h3 class="mt-8 text-xl font-semibold">Data & Platforms</h3>
-          <div class="mt-6 space-y-3">
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>MongoDB</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>PostgreSQL</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>MySQL</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>MS SQL</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Data integration</div>
-          </div>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
-          <div class="flex items-start justify-between"><div class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="brain-circuit"></i></div><span class="text-xs font-medium text-white/20">05</span></div>
-          <h3 class="mt-8 text-xl font-semibold">AI & Intelligent Systems</h3>
-          <div class="mt-6 space-y-3">
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>LLM integrations</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>RAG systems</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>AI agents</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>AI automation</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Intelligent workflows</div>
-          </div>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
-          <div class="flex items-start justify-between"><div class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="shield-check"></i></div><span class="text-xs font-medium text-white/20">06</span></div>
-          <h3 class="mt-8 text-xl font-semibold">Security & Reliability</h3>
-          <div class="mt-6 space-y-3">
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Secure APIs</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Authentication</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Monitoring</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Production support</div>
-            <div class="flex items-start gap-3 text-sm text-white/45"><div class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Reliability engineering</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================ -->
-  <!-- TECHNOLOGY -->
-  <!-- ================================================================ -->
-
-  <section id="technology" class="scroll-mt-20 px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
-    <div class="mx-auto max-w-7xl">
-      <div class="max-w-3xl">
-        <div class="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/35">TECHNOLOGY</div>
-        <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">Built with technologies that scale.</h2>
-        <p class="mt-6 text-base leading-8 text-white/50 sm:text-lg">We choose technology based on the problem, not the trend.</p>
-      </div>
-
-      <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div class="flex items-center gap-3"><div class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i data-lucide="code-2"></i></div><h3 class="font-semibold">Frontend</h3></div><div class="mt-6 flex flex-wrap gap-2"><span class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">React</span><span class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">Next.js</span><span class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">TypeScript</span><span class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">Tailwind CSS</span><span class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">Angular</span><span class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">React Native</span></div></div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div class="flex items-center gap-3"><div class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i data-lucide="server"></i></div><h3 class="font-semibold">Backend</h3></div><div class="mt-6 flex flex-wrap gap-2"><span class="tag">Node.js</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">PHP</span><span class="tag">MuleSoft</span><span class="tag">CodeIgniter</span><span class="tag">Spring Boot</span></div></div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div class="flex items-center gap-3"><div class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i data-lucide="network"></i></div><h3 class="font-semibold">API Management & Integration</h3></div><div class="mt-6 flex flex-wrap gap-2"><span class="tag">MuleSoft</span><span class="tag">Apigee</span><span class="tag">Azure APIM</span><span class="tag">REST APIs</span><span class="tag">SOAP APIs</span><span class="tag">API Gateway</span><span class="tag">OAuth 2.0</span><span class="tag">JWT</span></div></div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div class="flex items-center gap-3"><div class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i data-lucide="layers-3"></i></div><h3 class="font-semibold">Frameworks & Libraries</h3></div><div class="mt-6 flex flex-wrap gap-2"><span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Angular</span><span class="tag">React Native</span><span class="tag">Express.js</span><span class="tag">CodeIgniter</span><span class="tag">Tailwind CSS</span><span class="tag">Spring Boot</span></div></div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div class="flex items-center gap-3"><div class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i data-lucide="database"></i></div><h3 class="font-semibold">Databases</h3></div><div class="mt-6 flex flex-wrap gap-2"><span class="tag">MongoDB</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MS SQL</span><span class="tag">Azure Synapse</span></div></div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div class="flex items-center gap-3"><div class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i data-lucide="cloud"></i></div><h3 class="font-semibold">Cloud & DevOps</h3></div><div class="mt-6 flex flex-wrap gap-2"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Azure APIM</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Jenkins</span><span class="tag">CI/CD</span></div></div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div class="flex items-center gap-3"><div class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i data-lucide="brain-circuit"></i></div><h3 class="font-semibold">AI & Intelligent Systems</h3></div><div class="mt-6 flex flex-wrap gap-2"><span class="tag">LLM</span><span class="tag">RAG</span><span class="tag">AI Agents</span><span class="tag">Vector Databases</span><span class="tag">AI Automation</span></div></div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div class="flex items-center gap-3"><div class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i data-lucide="layers-3"></i></div><h3 class="font-semibold">Architecture</h3></div><div class="mt-6 flex flex-wrap gap-2"><span class="tag">Microservices</span><span class="tag">API-led</span><span class="tag">Event-driven</span><span class="tag">Serverless</span><span class="tag">Cloud Native</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================ -->
-  <!-- ABOUT -->
-  <!-- ================================================================ -->
-
-  <section id="about" class="scroll-mt-20 border-y border-white/10 bg-white/[0.02] px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
-    <div class="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:items-center">
-
-      <div>
-        <div class="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/40">WHY CODELAUNCH</div>
-        <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">Engineering is more than writing code.</h2>
-        <p class="mt-7 text-base leading-8 text-white/55 sm:text-lg">
-          We combine software engineering, integration architecture, cloud technologies and emerging AI capabilities
-          to build solutions that deliver measurable business value.
-        </p>
-
-        <div class="mt-9 grid gap-4 sm:grid-cols-2">
-          <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-6"><div class="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60"><i data-lucide="code-2"></i></div><h3 class="font-semibold">Engineering First</h3><p class="mt-3 text-sm leading-6 text-white/40">Strong engineering practices create maintainable and scalable systems.</p></div>
-          <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-6"><div class="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60"><i data-lucide="network"></i></div><h3 class="font-semibold">Integration First</h3><p class="mt-3 text-sm leading-6 text-white/40">Connect systems instead of creating isolated applications.</p></div>
-          <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-6"><div class="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60"><i data-lucide="shield-check"></i></div><h3 class="font-semibold">Secure by Design</h3><p class="mt-3 text-sm leading-6 text-white/40">Security and reliability built into every layer.</p></div>
-          <div class="rounded-2xl border border-white/10 bg-[#080c1a] p-6"><div class="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60"><i data-lucide="sparkles"></i></div><h3 class="font-semibold">Future Ready</h3><p class="mt-3 text-sm leading-6 text-white/40">Modern platforms ready for AI and automation.</p></div>
-        </div>
-      </div>
-
-      <div class="rounded-3xl border border-white/10 bg-[#080c1a] p-5 sm:p-7">
-        <div class="grid grid-cols-2 divide-x divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/10">
-          <div class="px-5 py-8 text-center sm:px-6"><div class="text-3xl font-bold">01</div><div class="mt-2 text-[10px] uppercase tracking-widest text-white/35 sm:text-xs">Engineering</div></div>
-          <div class="px-5 py-8 text-center sm:px-6"><div class="text-3xl font-bold">02</div><div class="mt-2 text-[10px] uppercase tracking-widest text-white/35 sm:text-xs">Integration</div></div>
-          <div class="px-5 py-8 text-center sm:px-6"><div class="text-3xl font-bold">03</div><div class="mt-2 text-[10px] uppercase tracking-widest text-white/35 sm:text-xs">Cloud</div></div>
-          <div class="px-5 py-8 text-center sm:px-6"><div class="text-3xl font-bold">04</div><div class="mt-2 text-[10px] uppercase tracking-widest text-white/35 sm:text-xs">AI</div></div>
-        </div>
-
-        <div class="mt-6 rounded-2xl border border-white/10 bg-white/[0.025] p-6">
-          <div class="flex items-center gap-3">
-            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-black"><i data-lucide="globe-2"></i></div>
-            <div><div class="font-semibold">Digital Engineering</div><div class="text-xs text-white/35">From idea to production</div></div>
-          </div>
-          <p class="mt-5 text-sm leading-7 text-white/40">
-            We help organizations move from fragmented systems and manual processes toward connected, scalable and intelligent digital platforms.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================================================================ -->
-  <!-- TEAM -->
-  <!-- ================================================================ -->
-
-  <section id="team" class="scroll-mt-20 px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
-    <div class="mx-auto max-w-7xl">
-      <div class="max-w-3xl">
-        <div class="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/35">OUR TEAM</div>
-        <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">Engineers, architects and problem solvers.</h2>
-        <p class="mt-6 text-base leading-8 text-white/50 sm:text-lg">
-          Codelaunch brings together engineering capabilities across software development, integration, cloud, data and intelligent automation.
-        </p>
-      </div>
-
-      <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-
-        <div class="group rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="code-2"></i></div>
-          <h3 class="mt-7 text-xl font-semibold">Product Engineering</h3>
-          <p class="mt-4 text-sm leading-7 text-white/45">Full-stack engineers focused on building modern, reliable and maintainable digital products.</p>
-          <div class="mt-6 flex flex-wrap gap-2"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">TypeScript</span></div>
-        </div>
-
-        <div class="group rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="network"></i></div>
-          <h3 class="mt-7 text-xl font-semibold">Integration Engineering</h3>
-          <p class="mt-4 text-sm leading-7 text-white/45">Architects and engineers focused on connecting enterprise systems, APIs and platforms.</p>
-          <div class="mt-6 flex flex-wrap gap-2"><span class="tag">MuleSoft</span><span class="tag">REST APIs</span><span class="tag">Microservices</span><span class="tag">Events</span></div>
-        </div>
-
-        <div class="group rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="cloud"></i></div>
-          <h3 class="mt-7 text-xl font-semibold">Cloud & DevOps</h3>
-          <p class="mt-4 text-sm leading-7 text-white/45">Cloud and DevOps capabilities for scalable infrastructure and automated delivery.</p>
-          <div class="mt-6 flex flex-wrap gap-2"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Docker</span><span class="tag">Kubernetes</span></div>
-        </div>
-
-        <div class="group rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i data-lucide="brain-circuit"></i></div>
-          <h3 class="mt-7 text-xl font-semibold">AI & Intelligent Systems</h3>
-          <p class="mt-4 text-sm leading-7 text-white/45">AI capabilities focused on LLMs, agents, automation and intelligent enterprise workflows.</p>
-          <div class="mt-6 flex flex-wrap gap-2"><span class="tag">LLM</span><span class="tag">RAG</span><span class="tag">AI Agents</span><span class="tag">Automation</span></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================ -->
-  <!-- CERTIFICATE CTA -->
-  <!-- ================================================================ -->
-
-  <section id="certification" class="scroll-mt-20 px-6 py-15 lg:px-8">
-    <div class="mx-auto max-w-7xl">
-      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] p-8 sm:p-12 lg:p-16">
-        <div class="absolute right-0 top-0 h-72 w-72 rounded-full bg-purple-600/10 blur-[100px]"></div>
-
-        <div class="relative grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
-            <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5"><i data-lucide="award" class="h-6 w-6"></i></div>
-            <div class="text-xs font-semibold uppercase tracking-[0.25em] text-white/35">PROFESSIONAL CERTIFICATION</div>
-            <h2 class="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">Learn. Build. Get certified.</h2>
-            <p class="mt-6 max-w-xl text-lg leading-8 text-white/50">Codelaunch certification helps recognize successful learning and course completion with verifiable digital certificates.</p>
-
-            <div class="mt-8 space-y-4">
-              <div class="flex items-center gap-3 text-sm text-white/55"><i data-lucide="check-circle-2" class="h-[17px] w-[17px] shrink-0 text-white/70"></i>Digital certificate records</div>
-              <div class="flex items-center gap-3 text-sm text-white/55"><i data-lucide="check-circle-2" class="h-[17px] w-[17px] shrink-0 text-white/70"></i>Unique certificate number</div>
-              <div class="flex items-center gap-3 text-sm text-white/55"><i data-lucide="check-circle-2" class="h-[17px] w-[17px] shrink-0 text-white/70"></i>Public certificate verification</div>
-              <div class="flex items-center gap-3 text-sm text-white/55"><i data-lucide="check-circle-2" class="h-[17px] w-[17px] shrink-0 text-white/70"></i>Secure verification workflow</div>
+            <div
+              class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/70">
+              <i data-lucide="sparkles" class="h-[14px] w-[14px]"></i>
+              Engineering the digital future
             </div>
 
-            <div class="mt-10">
-              <a href="/certificate/verify" class="group inline-flex items-center gap-3 rounded-xl bg-white px-7 py-4 font-semibold text-black transition hover:bg-white/90">
-                Verify a Certificate <i data-lucide="arrow-right" class="h-[18px] w-[18px] transition-transform group-hover:translate-x-1"></i>
-              </a>
+            <h1
+              class="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+              Build.<br>
+              Integrate.<br>
+              <span class="text-white/40">Scale.</span>
+            </h1>
+
+            <p
+              class="mt-8 max-w-xl text-base leading-8 text-white/60 sm:text-lg">
+              Codelaunch Technologies builds scalable digital products,
+              enterprise integrations, cloud platforms and intelligent
+              automation for businesses ready to move faster.
+            </p>
+
+            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+              <button onclick="scrollToSection('services')"
+                class="group flex items-center justify-center gap-3 rounded-xl bg-white px-7 py-4 font-semibold text-black transition hover:bg-white/90">
+                Start a Project
+                <i data-lucide="arrow-right"
+                  class="h-[18px] w-[18px] transition-transform group-hover:translate-x-1"></i>
+              </button>
+
+              <!-- <a href="/certificate/verify"
+                class="flex items-center justify-center gap-2 rounded-xl border border-white/15 px-7 py-4 font-medium text-white transition hover:bg-white/5">
+                <i data-lucide="award" class="h-[18px] w-[18px]"></i>
+                Verify Certificate
+              </a> -->
+            </div>
+
+            <div
+              class="mt-12 flex flex-wrap gap-x-8 gap-y-4 text-sm text-white/40">
+              <div class="flex items-center gap-2"><i
+                  data-lucide="check-circle-2" class="h-4 w-4"></i> Enterprise
+                Ready</div>
+              <div class="flex items-center gap-2"><i
+                  data-lucide="check-circle-2" class="h-4 w-4"></i> API
+                First</div>
+              <div class="flex items-center gap-2"><i
+                  data-lucide="check-circle-2" class="h-4 w-4"></i> AI
+                Enabled</div>
             </div>
           </div>
 
-          <div class="relative">
-            <div class="rounded-3xl border border-white/10 bg-[#080c1a] p-7 shadow-2xl">
-              <div class="flex items-center justify-between border-b border-white/10 pb-6">
-                <div class="flex items-center gap-3">
-                  <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-black"><i data-lucide="award" class="h-[22px] w-[22px]"></i></div>
-                  <div><div class="font-semibold">Codelaunch Technologies</div><div class="text-xs text-white/35">Digital Certificate</div></div>
+          <!-- HERO VISUAL -->
+          <div
+            class="relative hidden min-h-[500px] items-center justify-center lg:flex">
+            <div
+              class="absolute h-[360px] w-[360px] rounded-full border border-white/10"></div>
+            <div
+              class="absolute h-[460px] w-[460px] rounded-full border border-white/5"></div>
+
+            <div
+              class="relative flex h-48 w-48 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl">
+              <div
+                class="flex h-24 w-24 items-center justify-center rounded-2xl bg-white text-black">
+                <i data-lucide="code-2" class="h-12 w-12"></i>
+              </div>
+            </div>
+
+            <div
+              class="absolute -left-2 top-20 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
+              <i data-lucide="code-2" class="h-4 w-4 text-white/70"></i><span
+                class="text-sm text-white/70">Engineering</span>
+            </div>
+
+            <div
+              class="absolute -right-2 top-32 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
+              <i data-lucide="network" class="h-4 w-4 text-white/70"></i><span
+                class="text-sm text-white/70">Integration</span>
+            </div>
+
+            <div
+              class="absolute bottom-24 left-8 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
+              <i data-lucide="cloud" class="h-4 w-4 text-white/70"></i><span
+                class="text-sm text-white/70">Cloud</span>
+            </div>
+
+            <div
+              class="absolute bottom-12 right-10 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
+              <i data-lucide="brain-circuit"
+                class="h-4 w-4 text-white/70"></i><span
+                class="text-sm text-white/70">AI Agents</span>
+            </div>
+
+            <div
+              class="absolute left-1/2 top-2 flex -translate-x-1/2 items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
+              <i data-lucide="workflow" class="h-4 w-4 text-white/70"></i><span
+                class="text-sm text-white/70">AIDLC</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- SOLUTIONS -->
+      <!-- ================================================================ -->
+
+      <section id="solutions"
+        class="scroll-mt-20 px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-3xl">
+            <div
+              class="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/35">SOLUTIONS</div>
+            <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">Technology
+              that solves real business problems.</h2>
+            <p class="mt-6 text-base leading-8 text-white/50 sm:text-lg">
+              From digital products to enterprise integrations and intelligent
+              automation, we design solutions around measurable outcomes.
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+
+            <div
+              class="group rounded-2xl border border-white/10 bg-white/[0.025] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
+              <div
+                class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                  data-lucide="code-2"></i></div>
+              <h3 class="text-xl font-semibold">Digital Products</h3>
+              <p class="mt-4 text-sm leading-7 text-white/45">Modern web
+                applications and platforms designed for performance,
+                maintainability and scale.</p>
+              <div
+                class="mt-7 flex items-center gap-2 text-sm text-white/40 transition group-hover:text-white">Explore
+                <i data-lucide="arrow-right"
+                  class="h-[15px] w-[15px]"></i></div>
+            </div>
+
+            <div
+              class="group rounded-2xl border border-white/10 bg-white/[0.025] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
+              <div
+                class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                  data-lucide="network"></i></div>
+              <h3 class="text-xl font-semibold">Enterprise Integration</h3>
+              <p class="mt-4 text-sm leading-7 text-white/45">Connect
+                applications, APIs, databases and enterprise platforms through
+                scalable integration architecture.</p>
+              <div
+                class="mt-7 flex items-center gap-2 text-sm text-white/40 transition group-hover:text-white">Explore
+                <i data-lucide="arrow-right"
+                  class="h-[15px] w-[15px]"></i></div>
+            </div>
+
+            <div
+              class="group rounded-2xl border border-white/10 bg-white/[0.025] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
+              <div
+                class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                  data-lucide="cloud"></i></div>
+              <h3 class="text-xl font-semibold">Cloud Platforms</h3>
+              <p class="mt-4 text-sm leading-7 text-white/45">Cloud-native
+                infrastructure, DevOps and deployment strategies designed for
+                reliable growth.</p>
+              <div
+                class="mt-7 flex items-center gap-2 text-sm text-white/40 transition group-hover:text-white">Explore
+                <i data-lucide="arrow-right"
+                  class="h-[15px] w-[15px]"></i></div>
+            </div>
+
+            <div
+              class="group rounded-2xl border border-white/10 bg-white/[0.025] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
+              <div
+                class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                  data-lucide="bot"></i></div>
+              <h3 class="text-xl font-semibold">AI & Automation</h3>
+              <p class="mt-4 text-sm leading-7 text-white/45">AI-powered
+                workflows, intelligent agents and automation that reduce manual
+                effort and accelerate delivery.</p>
+              <div
+                class="mt-7 flex items-center gap-2 text-sm text-white/40 transition group-hover:text-white">Explore
+                <i data-lucide="arrow-right"
+                  class="h-[15px] w-[15px]"></i></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- AIDLC -->
+      <!-- ================================================================ -->
+
+      <section id="aidlc"
+        class="scroll-mt-20 border-y border-white/10 bg-white/[0.02] px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+
+          <div class="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div>
+              <div
+                class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
+                <i data-lucide="sparkles" class="h-[14px] w-[14px]"></i>AIDLC
+              </div>
+
+              <h2
+                class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                AI Development<br><span class="text-white/40">Lifecycle.</span>
+              </h2>
+
+              <p
+                class="mt-7 max-w-2xl text-base leading-8 text-white/50 sm:text-lg">
+                Transform requirements into production-ready software using AI
+                agents across the complete development lifecycle.
+              </p>
+
+              <p class="mt-5 max-w-2xl text-sm leading-7 text-white/35">
+                Capture requirements from email, WhatsApp or messages. Let AI
+                agents assist with implementation, testing,
+                governance and CI/CD — while keeping human approval at critical
+                production gates.
+              </p>
+
+              <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+                <button onclick="scrollToSection('contact')"
+                  class="group flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:bg-white/90">
+                  Discuss AIDLC <i data-lucide="arrow-right"
+                    class="h-[17px] w-[17px] transition-transform group-hover:translate-x-1"></i>
+                </button>
+                <button onclick="openWhatsApp()"
+                  class="flex items-center justify-center gap-2 rounded-xl border border-white/10 px-6 py-3.5 text-sm font-medium text-white/70 transition hover:bg-white/5 hover:text-white">
+                  <i data-lucide="message-circle"
+                    class="h-[17px] w-[17px]"></i>Talk on WhatsApp
+                </button>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div
+                class="rounded-3xl border border-white/10 bg-[#080c1a] p-5 shadow-2xl sm:p-7">
+                <div class="mb-6 flex items-center justify-between">
+                  <div>
+                    <div
+                      class="text-xs uppercase tracking-[0.2em] text-white/30">AI
+                      Engineering Pipeline</div>
+                    <div class="mt-2 text-lg font-semibold">From requirement to
+                      release</div>
+                  </div>
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5"><i
+                      data-lucide="workflow"
+                      class="h-[18px] w-[18px]"></i></div>
                 </div>
-                <div class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">VERIFIED</div>
-              </div>
 
-              <div class="py-8">
-                <div class="text-xs uppercase tracking-widest text-white/30">Certificate of Achievement</div>
-                <div class="mt-3 text-2xl font-semibold">Professional Learning</div>
-                <p class="mt-4 text-sm leading-6 text-white/40">Certificates issued through the Codelaunch learning platform can be verified publicly using the certificate number.</p>
+                <div class="space-y-3">
+                  <div class="relative flex gap-4">
+                    <div
+                      class="absolute bottom-[-12px] left-[17px] top-[42px] w-px bg-white/10"></div>
+                    <div
+                      class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i
+                        data-lucide="mail" class="h-4 w-4"></i></div>
+                    <div
+                      class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div
+                        class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div
+                          class="flex items-center gap-2"><span
+                            class="text-[10px] text-white/20">01</span><span
+                            class="text-sm font-semibold">Capture</span></div><span
+                          class="text-[10px] text-white/30 sm:text-right">Email
+                          · WhatsApp · Messages</span></div></div>
+                  </div>
+                  <div class="relative flex gap-4">
+                    <div
+                      class="absolute bottom-[-12px] left-[17px] top-[42px] w-px bg-white/10"></div>
+                    <div
+                      class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i
+                        data-lucide="brain-circuit" class="h-4 w-4"></i></div>
+                    <div
+                      class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div
+                        class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div
+                          class="flex items-center gap-2"><span
+                            class="text-[10px] text-white/20">02</span><span
+                            class="text-sm font-semibold">Analyze</span></div><span
+                          class="text-[10px] text-white/30 sm:text-right">Requirements
+                          · Impact · Planning</span></div></div>
+                  </div>
+                  <div class="relative flex gap-4">
+                    <div
+                      class="absolute bottom-[-12px] left-[17px] top-[42px] w-px bg-white/10"></div>
+                    <div
+                      class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i
+                        data-lucide="code-2" class="h-4 w-4"></i></div>
+                    <div
+                      class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div
+                        class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div
+                          class="flex items-center gap-2"><span
+                            class="text-[10px] text-white/20">03</span><span
+                            class="text-sm font-semibold">Develop</span></div><span
+                          class="text-[10px] text-white/30 sm:text-right">New
+                          implementation · Enhancements</span></div></div>
+                  </div>
+                  <div class="relative flex gap-4">
+                    <div
+                      class="absolute bottom-[-12px] left-[17px] top-[42px] w-px bg-white/10"></div>
+                    <div
+                      class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i
+                        data-lucide="check-circle-2" class="h-4 w-4"></i></div>
+                    <div
+                      class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div
+                        class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div
+                          class="flex items-center gap-2"><span
+                            class="text-[10px] text-white/20">04</span><span
+                            class="text-sm font-semibold">Test</span></div><span
+                          class="text-[10px] text-white/30 sm:text-right">Unit ·
+                          Integration · Regression</span></div></div>
+                  </div>
+                  <div class="relative flex gap-4">
+                    <div
+                      class="absolute bottom-[-12px] left-[17px] top-[42px] w-px bg-white/10"></div>
+                    <div
+                      class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i
+                        data-lucide="shield-check" class="h-4 w-4"></i></div>
+                    <div
+                      class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div
+                        class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div
+                          class="flex items-center gap-2"><span
+                            class="text-[10px] text-white/20">05</span><span
+                            class="text-sm font-semibold">Govern</span></div><span
+                          class="text-[10px] text-white/30 sm:text-right">Quality
+                          · Security · Rules</span></div></div>
+                  </div>
+                  <div class="relative flex gap-4">
+                    <div
+                      class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#0b1020] text-white/60"><i
+                        data-lucide="rocket" class="h-4 w-4"></i></div>
+                    <div
+                      class="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"><div
+                        class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"><div
+                          class="flex items-center gap-2"><span
+                            class="text-[10px] text-white/20">06</span><span
+                            class="text-sm font-semibold">Deploy</span></div><span
+                          class="text-[10px] text-white/30 sm:text-right">CI/CD
+                          · Approval · Production</span></div></div>
+                  </div>
+                </div>
               </div>
+            </div>
+          </div>
 
-              <div class="grid gap-3 sm:grid-cols-2">
-                <div class="rounded-xl border border-white/10 bg-white/[0.025] p-4"><div class="text-xs text-white/30">Verification</div><div class="mt-2 flex items-center gap-2 text-sm"><i data-lucide="check-circle-2" class="h-[15px] w-[15px]"></i>Authentic</div></div>
-                <div class="rounded-xl border border-white/10 bg-white/[0.025] p-4"><div class="text-xs text-white/30">Certificate</div><div class="mt-2 text-sm">Digitally Verified</div></div>
+          <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div
+              class="rounded-2xl border border-white/10 bg-[#080c1a] p-5"><div
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/60"><i
+                  data-lucide="bot"></i></div><h3 class="mt-5 font-semibold">AI
+                Agents</h3><p
+                class="mt-2 text-xs leading-6 text-white/35">Agents assist
+                across development and delivery workflows.</p></div>
+            <div
+              class="rounded-2xl border border-white/10 bg-[#080c1a] p-5"><div
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/60"><i
+                  data-lucide="network"></i></div><h3
+                class="mt-5 font-semibold">Existing Systems</h3><p
+                class="mt-2 text-xs leading-6 text-white/35">Enhance existing
+                applications instead of starting from zero.</p></div>
+            <div
+              class="rounded-2xl border border-white/10 bg-[#080c1a] p-5"><div
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/60"><i
+                  data-lucide="shield-check"></i></div><h3
+                class="mt-5 font-semibold">Governance</h3><p
+                class="mt-2 text-xs leading-6 text-white/35">Apply quality,
+                security and deployment rules automatically.</p></div>
+            <div
+              class="rounded-2xl border border-white/10 bg-[#080c1a] p-5"><div
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/60"><i
+                  data-lucide="rocket"></i></div><h3
+                class="mt-5 font-semibold">CI/CD</h3><p
+                class="mt-2 text-xs leading-6 text-white/35">Automate build,
+                test and deployment pipelines with controlled
+                releases.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- SERVICES -->
+      <!-- ================================================================ -->
+
+      <section id="services"
+        class="scroll-mt-20 px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-3xl">
+            <div
+              class="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/35">SERVICES</div>
+            <h2
+              class="text-4xl font-bold tracking-tight sm:text-5xl">Engineering
+              capabilities built for scale.</h2>
+            <p
+              class="mt-6 text-base leading-8 text-white/50 sm:text-lg">End-to-end
+              technology services covering product engineering, integration,
+              cloud, data, AI and reliability.</p>
+          </div>
+
+          <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+
+            <div
+              class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
+              <div class="flex items-start justify-between"><div
+                  class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                    data-lucide="code-2"></i></div><span
+                  class="text-xs font-medium text-white/20">01</span></div>
+              <h3 class="mt-8 text-xl font-semibold">Product Engineering</h3>
+              <div class="mt-6 space-y-3">
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Full-stack
+                  development</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Web
+                  applications</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Enterprise
+                  platforms</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>API
+                  development</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Modernization</div>
               </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
+              <div class="flex items-start justify-between"><div
+                  class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                    data-lucide="network"></i></div><span
+                  class="text-xs font-medium text-white/20">02</span></div>
+              <h3 class="mt-8 text-xl font-semibold">Integration
+                Engineering</h3>
+              <div class="mt-6 space-y-3">
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>API-led
+                  integration</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>MuleSoft</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Apigee</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Azure
+                  APIM</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>System
+                  integration</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Event-driven
+                  architecture</div>
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
+              <div class="flex items-start justify-between"><div
+                  class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                    data-lucide="cloud"></i></div><span
+                  class="text-xs font-medium text-white/20">03</span></div>
+              <h3 class="mt-8 text-xl font-semibold">Cloud & DevOps</h3>
+              <div class="mt-6 space-y-3">
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>AWS
+                  & Azure</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Docker</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Kubernetes</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Jenkins</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>CI/CD
+                  pipelines</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Cloud-native
+                  architecture</div>
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
+              <div class="flex items-start justify-between"><div
+                  class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                    data-lucide="database"></i></div><span
+                  class="text-xs font-medium text-white/20">04</span></div>
+              <h3 class="mt-8 text-xl font-semibold">Data & Platforms</h3>
+              <div class="mt-6 space-y-3">
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>MongoDB</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>PostgreSQL</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>MySQL</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>MS
+                  SQL</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Data
+                  integration</div>
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
+              <div class="flex items-start justify-between"><div
+                  class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                    data-lucide="brain-circuit"></i></div><span
+                  class="text-xs font-medium text-white/20">05</span></div>
+              <h3 class="mt-8 text-xl font-semibold">AI & Intelligent
+                Systems</h3>
+              <div class="mt-6 space-y-3">
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>LLM
+                  integrations</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>RAG
+                  systems</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>AI
+                  agents</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>AI
+                  automation</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Intelligent
+                  workflows</div>
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition hover:border-white/15">
+              <div class="flex items-start justify-between"><div
+                  class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                    data-lucide="shield-check"></i></div><span
+                  class="text-xs font-medium text-white/20">06</span></div>
+              <h3 class="mt-8 text-xl font-semibold">Security & Reliability</h3>
+              <div class="mt-6 space-y-3">
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Secure
+                  APIs</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Authentication</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Monitoring</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Production
+                  support</div>
+                <div class="flex items-start gap-3 text-sm text-white/45"><div
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40"></div>Reliability
+                  engineering</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- TECHNOLOGY -->
+      <!-- ================================================================ -->
+
+      <section id="technology"
+        class="scroll-mt-20 px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-3xl">
+            <div
+              class="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/35">TECHNOLOGY</div>
+            <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">Built with
+              technologies that scale.</h2>
+            <p class="mt-6 text-base leading-8 text-white/50 sm:text-lg">We
+              choose technology based on the problem, not the trend.</p>
+          </div>
+
+          <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            <div
+              class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div
+                class="flex items-center gap-3"><div
+                  class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i
+                    data-lucide="code-2"></i></div><h3
+                  class="font-semibold">Frontend</h3></div><div
+                class="mt-6 flex flex-wrap gap-2"><span
+                  class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">React</span><span
+                  class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">Next.js</span><span
+                  class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">TypeScript</span><span
+                  class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">Tailwind
+                  CSS</span><span
+                  class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">Angular</span><span
+                  class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-white/50">React
+                  Native</span></div></div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div
+                class="flex items-center gap-3"><div
+                  class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i
+                    data-lucide="server"></i></div><h3
+                  class="font-semibold">Backend</h3></div><div
+                class="mt-6 flex flex-wrap gap-2"><span
+                  class="tag">Node.js</span><span class="tag">Python</span><span
+                  class="tag">Java</span><span class="tag">PHP</span><span
+                  class="tag">MuleSoft</span><span
+                  class="tag">CodeIgniter</span><span class="tag">Spring
+                  Boot</span></div></div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div
+                class="flex items-center gap-3"><div
+                  class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i
+                    data-lucide="network"></i></div><h3
+                  class="font-semibold">API Management &
+                  Integration</h3></div><div
+                class="mt-6 flex flex-wrap gap-2"><span
+                  class="tag">MuleSoft</span><span
+                  class="tag">Apigee</span><span class="tag">Azure
+                  APIM</span><span class="tag">REST APIs</span><span
+                  class="tag">SOAP APIs</span><span class="tag">API
+                  Gateway</span><span class="tag">OAuth 2.0</span><span
+                  class="tag">JWT</span></div></div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div
+                class="flex items-center gap-3"><div
+                  class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i
+                    data-lucide="layers-3"></i></div><h3
+                  class="font-semibold">Frameworks & Libraries</h3></div><div
+                class="mt-6 flex flex-wrap gap-2"><span
+                  class="tag">React.js</span><span
+                  class="tag">Next.js</span><span
+                  class="tag">Angular</span><span class="tag">React
+                  Native</span><span class="tag">Express.js</span><span
+                  class="tag">CodeIgniter</span><span class="tag">Tailwind
+                  CSS</span><span class="tag">Spring Boot</span></div></div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div
+                class="flex items-center gap-3"><div
+                  class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i
+                    data-lucide="database"></i></div><h3
+                  class="font-semibold">Databases</h3></div><div
+                class="mt-6 flex flex-wrap gap-2"><span
+                  class="tag">MongoDB</span><span
+                  class="tag">PostgreSQL</span><span
+                  class="tag">MySQL</span><span class="tag">MS SQL</span><span
+                  class="tag">Azure Synapse</span></div></div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div
+                class="flex items-center gap-3"><div
+                  class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i
+                    data-lucide="cloud"></i></div><h3
+                  class="font-semibold">Cloud & DevOps</h3></div><div
+                class="mt-6 flex flex-wrap gap-2"><span
+                  class="tag">AWS</span><span class="tag">Azure</span><span
+                  class="tag">Azure APIM</span><span
+                  class="tag">Docker</span><span
+                  class="tag">Kubernetes</span><span
+                  class="tag">Jenkins</span><span
+                  class="tag">CI/CD</span></div></div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div
+                class="flex items-center gap-3"><div
+                  class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i
+                    data-lucide="brain-circuit"></i></div><h3
+                  class="font-semibold">AI & Intelligent Systems</h3></div><div
+                class="mt-6 flex flex-wrap gap-2"><span
+                  class="tag">LLM</span><span class="tag">RAG</span><span
+                  class="tag">AI Agents</span><span class="tag">Vector
+                  Databases</span><span class="tag">AI
+                  Automation</span></div></div>
+
+            <div
+              class="rounded-2xl border border-white/10 bg-white/[0.025] p-7"><div
+                class="flex items-center gap-3"><div
+                  class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/60"><i
+                    data-lucide="layers-3"></i></div><h3
+                  class="font-semibold">Architecture</h3></div><div
+                class="mt-6 flex flex-wrap gap-2"><span
+                  class="tag">Microservices</span><span
+                  class="tag">API-led</span><span
+                  class="tag">Event-driven</span><span
+                  class="tag">Serverless</span><span class="tag">Cloud
+                  Native</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- ABOUT -->
+      <!-- ================================================================ -->
+
+      <section id="about"
+        class="scroll-mt-20 border-y border-white/10 bg-white/[0.02] px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
+        <div
+          class="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:items-center">
+
+          <div>
+            <div
+              class="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/40">WHY
+              CODELAUNCH</div>
+            <h2
+              class="text-4xl font-bold tracking-tight sm:text-5xl">Engineering
+              is more than writing code.</h2>
+            <p class="mt-7 text-base leading-8 text-white/55 sm:text-lg">
+              We combine software engineering, integration architecture, cloud
+              technologies and emerging AI capabilities
+              to build solutions that deliver measurable business value.
+            </p>
+
+            <div class="mt-9 grid gap-4 sm:grid-cols-2">
+              <div
+                class="rounded-2xl border border-white/10 bg-[#080c1a] p-6"><div
+                  class="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60"><i
+                    data-lucide="code-2"></i></div><h3
+                  class="font-semibold">Engineering First</h3><p
+                  class="mt-3 text-sm leading-6 text-white/40">Strong
+                  engineering practices create maintainable and scalable
+                  systems.</p></div>
+              <div
+                class="rounded-2xl border border-white/10 bg-[#080c1a] p-6"><div
+                  class="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60"><i
+                    data-lucide="network"></i></div><h3
+                  class="font-semibold">Integration First</h3><p
+                  class="mt-3 text-sm leading-6 text-white/40">Connect systems
+                  instead of creating isolated applications.</p></div>
+              <div
+                class="rounded-2xl border border-white/10 bg-[#080c1a] p-6"><div
+                  class="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60"><i
+                    data-lucide="shield-check"></i></div><h3
+                  class="font-semibold">Secure by Design</h3><p
+                  class="mt-3 text-sm leading-6 text-white/40">Security and
+                  reliability built into every layer.</p></div>
+              <div
+                class="rounded-2xl border border-white/10 bg-[#080c1a] p-6"><div
+                  class="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60"><i
+                    data-lucide="sparkles"></i></div><h3
+                  class="font-semibold">Future Ready</h3><p
+                  class="mt-3 text-sm leading-6 text-white/40">Modern platforms
+                  ready for AI and automation.</p></div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-3xl border border-white/10 bg-[#080c1a] p-5 sm:p-7">
+            <div
+              class="grid grid-cols-2 divide-x divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/10">
+              <div class="px-5 py-8 text-center sm:px-6"><div
+                  class="text-3xl font-bold">01</div><div
+                  class="mt-2 text-[10px] uppercase tracking-widest text-white/35 sm:text-xs">Engineering</div></div>
+              <div class="px-5 py-8 text-center sm:px-6"><div
+                  class="text-3xl font-bold">02</div><div
+                  class="mt-2 text-[10px] uppercase tracking-widest text-white/35 sm:text-xs">Integration</div></div>
+              <div class="px-5 py-8 text-center sm:px-6"><div
+                  class="text-3xl font-bold">03</div><div
+                  class="mt-2 text-[10px] uppercase tracking-widest text-white/35 sm:text-xs">Cloud</div></div>
+              <div class="px-5 py-8 text-center sm:px-6"><div
+                  class="text-3xl font-bold">04</div><div
+                  class="mt-2 text-[10px] uppercase tracking-widest text-white/35 sm:text-xs">AI</div></div>
+            </div>
+
+            <div
+              class="mt-6 rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="flex items-center gap-3">
+                <div
+                  class="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-black"><i
+                    data-lucide="globe-2"></i></div>
+                <div><div class="font-semibold">Digital Engineering</div><div
+                    class="text-xs text-white/35">From idea to
+                    production</div></div>
+              </div>
+              <p class="mt-5 text-sm leading-7 text-white/40">
+                We help organizations move from fragmented systems and manual
+                processes toward connected, scalable and intelligent digital
+                platforms.
+              </p>
             </div>
           </div>
 
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- ================================================================ -->
-  <!-- CONTACT / CTA -->
-  <!-- ================================================================ -->
+      <!-- ================================================================ -->
+      <!-- TEAM -->
+      <!-- ================================================================ -->
 
-  <section id="contact" class="scroll-mt-20 relative overflow-hidden px-5 py-15 sm:px-6 sm:py-32 lg:px-8">
-    <div class="absolute left-1/2 top-1/2 h-[400px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-[120px]"></div>
-
-    <div class="relative mx-auto max-w-4xl text-center">
-      <div class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-black"><i data-lucide="rocket" class="h-[26px] w-[26px]"></i></div>
-      <h2 class="text-4xl font-bold tracking-tight sm:text-6xl">Ready to launch your next idea?</h2>
-      <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/50 sm:text-lg">Let's build a reliable, scalable and intelligent digital solution together.</p>
-
-      <div class="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-        <button onclick="openWhatsApp()" class="group inline-flex items-center justify-center gap-3 rounded-xl bg-white px-8 py-4 font-semibold text-black transition hover:bg-white/90">
-          <i data-lucide="message-circle" class="h-[18px] w-[18px]"></i>
-          Start on WhatsApp
-          <i data-lucide="arrow-right" class="h-[18px] w-[18px] transition-transform group-hover:translate-x-1"></i>
-        </button>
-
-        <a href="mailto:info@codelaunchtechnologies.com" class="inline-flex items-center justify-center gap-3 rounded-xl border border-white/10 px-8 py-4 font-medium text-white transition hover:bg-white/5">
-          <i data-lucide="mail" class="h-[18px] w-[18px]"></i> Email Us
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================ -->
-  <!-- FOOTER -->
-  <!-- ================================================================ -->
-
-  <footer class="border-t border-white/10 bg-[#04060c] px-5 py-14 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-7xl">
-
-      <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-5">
-
-        <div class="lg:col-span-2">
-          <div class="flex items-center gap-3">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-black"><i data-lucide="code-2" class="h-5 w-5"></i></div>
-            <div>
-              <div class="font-semibold">Codelaunch Technologies</div>
-              <div class="text-xs text-white/35">Engineering the digital future</div>
-            </div>
+      <section id="team"
+        class="scroll-mt-20 px-5 py-24 sm:px-6 sm:py-15 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-3xl">
+            <div
+              class="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/35">OUR
+              TEAM</div>
+            <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">Engineers,
+              architects and problem solvers.</h2>
+            <p class="mt-6 text-base leading-8 text-white/50 sm:text-lg">
+              Codelaunch brings together engineering capabilities across
+              software development, integration, cloud, data and intelligent
+              automation.
+            </p>
           </div>
 
-          <p class="mt-5 max-w-md text-sm leading-7 text-white/35">
-            Digital engineering, enterprise integration, cloud platforms, AI and automation for organizations building the future.
-          </p>
+          <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
 
-          <p class="mt-5 max-w-md text-sm leading-7 text-white/35">
-            <a href="https://www.codelaunchtechnologies.com" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">
-              www.codelaunchtechnologies.com
-            </a>
-          </p>
+            <div
+              class="group rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20">
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                  data-lucide="code-2"></i></div>
+              <h3 class="mt-7 text-xl font-semibold">Product Engineering</h3>
+              <p class="mt-4 text-sm leading-7 text-white/45">Full-stack
+                engineers focused on building modern, reliable and maintainable
+                digital products.</p>
+              <div class="mt-6 flex flex-wrap gap-2"><span
+                  class="tag">React</span><span class="tag">Next.js</span><span
+                  class="tag">Node.js</span><span
+                  class="tag">TypeScript</span></div>
+            </div>
 
-          <div class="mt-6 flex items-center gap-3">
-            <a href="https://www.linkedin.com/company/135757823" target="_blank" rel="noopener noreferrer" aria-label="Codelaunch Technologies on LinkedIn"
-              class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/45 transition hover:bg-white/10 hover:text-white">
-              <span class="text-sm font-bold leading-none">in</span>
-            </a>
+            <div
+              class="group rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20">
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                  data-lucide="network"></i></div>
+              <h3 class="mt-7 text-xl font-semibold">Integration
+                Engineering</h3>
+              <p class="mt-4 text-sm leading-7 text-white/45">Architects and
+                engineers focused on connecting enterprise systems, APIs and
+                platforms.</p>
+              <div class="mt-6 flex flex-wrap gap-2"><span
+                  class="tag">MuleSoft</span><span class="tag">REST
+                  APIs</span><span class="tag">Microservices</span><span
+                  class="tag">Events</span></div>
+            </div>
 
-            <button onclick="openWhatsApp()" aria-label="Contact Codelaunch on WhatsApp"
-              class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/45 transition hover:bg-white/10 hover:text-white">
-              <i data-lucide="message-circle" class="h-[17px] w-[17px]"></i>
+            <div
+              class="group rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20">
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                  data-lucide="cloud"></i></div>
+              <h3 class="mt-7 text-xl font-semibold">Cloud & DevOps</h3>
+              <p class="mt-4 text-sm leading-7 text-white/45">Cloud and DevOps
+                capabilities for scalable infrastructure and automated
+                delivery.</p>
+              <div class="mt-6 flex flex-wrap gap-2"><span
+                  class="tag">AWS</span><span class="tag">Azure</span><span
+                  class="tag">Docker</span><span
+                  class="tag">Kubernetes</span></div>
+            </div>
+
+            <div
+              class="group rounded-2xl border border-white/10 bg-[#080c1a] p-7 transition duration-300 hover:-translate-y-1 hover:border-white/20">
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70"><i
+                  data-lucide="brain-circuit"></i></div>
+              <h3 class="mt-7 text-xl font-semibold">AI & Intelligent
+                Systems</h3>
+              <p class="mt-4 text-sm leading-7 text-white/45">AI capabilities
+                focused on LLMs, agents, automation and intelligent enterprise
+                workflows.</p>
+              <div class="mt-6 flex flex-wrap gap-2"><span
+                  class="tag">LLM</span><span class="tag">RAG</span><span
+                  class="tag">AI Agents</span><span
+                  class="tag">Automation</span></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- CERTIFICATE CTA -->
+      <!-- ================================================================ -->
+
+      <section id="certification" class="scroll-mt-20 px-6 py-15 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div
+            class="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] p-8 sm:p-12 lg:p-16">
+            <div
+              class="absolute right-0 top-0 h-72 w-72 rounded-full bg-purple-600/10 blur-[100px]"></div>
+
+            <div class="relative grid gap-12 lg:grid-cols-2 lg:items-center">
+              <div>
+                <div
+                  class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5"><i
+                    data-lucide="award" class="h-6 w-6"></i></div>
+                <div
+                  class="text-xs font-semibold uppercase tracking-[0.25em] text-white/35">PROFESSIONAL
+                  CERTIFICATION</div>
+                <h2
+                  class="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">Learn.
+                  Build. Get certified.</h2>
+                <p
+                  class="mt-6 max-w-xl text-lg leading-8 text-white/50">Codelaunch
+                  certification helps recognize successful learning and course
+                  completion with verifiable digital certificates.</p>
+
+                <div class="mt-8 space-y-4">
+                  <div class="flex items-center gap-3 text-sm text-white/55"><i
+                      data-lucide="check-circle-2"
+                      class="h-[17px] w-[17px] shrink-0 text-white/70"></i>Digital
+                    certificate records</div>
+                  <div class="flex items-center gap-3 text-sm text-white/55"><i
+                      data-lucide="check-circle-2"
+                      class="h-[17px] w-[17px] shrink-0 text-white/70"></i>Unique
+                    certificate number</div>
+                  <div class="flex items-center gap-3 text-sm text-white/55"><i
+                      data-lucide="check-circle-2"
+                      class="h-[17px] w-[17px] shrink-0 text-white/70"></i>Public
+                    certificate verification</div>
+                  <div class="flex items-center gap-3 text-sm text-white/55"><i
+                      data-lucide="check-circle-2"
+                      class="h-[17px] w-[17px] shrink-0 text-white/70"></i>Secure
+                    verification workflow</div>
+                </div>
+
+                <div class="mt-10">
+                  <!-- <a href="/certificate/verify"
+                    class="group inline-flex items-center gap-3 rounded-xl bg-white px-7 py-4 font-semibold text-black transition hover:bg-white/90">
+                    Verify a Certificate <i data-lucide="arrow-right"
+                      class="h-[18px] w-[18px] transition-transform group-hover:translate-x-1"></i>
+                  </a> -->
+                </div>
+              </div>
+
+              <div class="relative">
+                <div
+                  class="rounded-3xl border border-white/10 bg-[#080c1a] p-7 shadow-2xl">
+                  <div
+                    class="flex items-center justify-between border-b border-white/10 pb-6">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-black"><i
+                          data-lucide="award"
+                          class="h-[22px] w-[22px]"></i></div>
+                      <div><div class="font-semibold">Codelaunch
+                          Technologies</div><div
+                          class="text-xs text-white/35">Digital
+                          Certificate</div></div>
+                    </div>
+                    <div
+                      class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">VERIFIED</div>
+                  </div>
+
+                  <div class="py-8">
+                    <div
+                      class="text-xs uppercase tracking-widest text-white/30">Certificate
+                      of Achievement</div>
+                    <div class="mt-3 text-2xl font-semibold">Professional
+                      Learning</div>
+                    <p class="mt-4 text-sm leading-6 text-white/40">Certificates
+                      issued through the Codelaunch learning platform can be
+                      verified publicly using the certificate number.</p>
+                  </div>
+
+                  <div class="grid gap-3 sm:grid-cols-2">
+                    <div
+                      class="rounded-xl border border-white/10 bg-white/[0.025] p-4"><div
+                        class="text-xs text-white/30">Verification</div><div
+                        class="mt-2 flex items-center gap-2 text-sm"><i
+                          data-lucide="check-circle-2"
+                          class="h-[15px] w-[15px]"></i>Authentic</div></div>
+                    <div
+                      class="rounded-xl border border-white/10 bg-white/[0.025] p-4"><div
+                        class="text-xs text-white/30">Certificate</div><div
+                        class="mt-2 text-sm">Digitally Verified</div></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
+      <!-- CONTACT / CTA -->
+      <!-- ================================================================ -->
+
+      <section id="contact"
+        class="scroll-mt-20 relative overflow-hidden px-5 py-15 sm:px-6 sm:py-32 lg:px-8">
+        <div
+          class="absolute left-1/2 top-1/2 h-[400px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-[120px]"></div>
+
+        <div class="relative mx-auto max-w-4xl text-center">
+          <div
+            class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-black"><i
+              data-lucide="rocket" class="h-[26px] w-[26px]"></i></div>
+          <h2 class="text-4xl font-bold tracking-tight sm:text-6xl">Ready to
+            launch your next idea?</h2>
+          <p
+            class="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/50 sm:text-lg">Let's
+            build a reliable, scalable and intelligent digital solution
+            together.</p>
+
+          <div class="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+            <button onclick="openWhatsApp()"
+              class="group inline-flex items-center justify-center gap-3 rounded-xl bg-white px-8 py-4 font-semibold text-black transition hover:bg-white/90">
+              <i data-lucide="message-circle" class="h-[18px] w-[18px]"></i>
+              Start on WhatsApp
+              <i data-lucide="arrow-right"
+                class="h-[18px] w-[18px] transition-transform group-hover:translate-x-1"></i>
             </button>
 
-            <a href="mailto:info@codelaunchtechnologies.com" aria-label="Email Codelaunch Technologies"
-              class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/45 transition hover:bg-white/10 hover:text-white">
-              <i data-lucide="mail" class="h-[17px] w-[17px]"></i>
+            <a href="mailto:info@codelaunchtechnologies.com"
+              class="inline-flex items-center justify-center gap-3 rounded-xl border border-white/10 px-8 py-4 font-medium text-white transition hover:bg-white/5">
+              <i data-lucide="mail" class="h-[18px] w-[18px]"></i> Email Us
             </a>
           </div>
         </div>
+      </section>
 
-        <div>
-          <div class="mb-5 text-xs font-semibold uppercase tracking-widest text-white/30">Company</div>
-          <div class="space-y-3 text-sm text-white/45">
-            <button onclick="scrollToSection('about')" class="block transition hover:text-white">About</button>
-            <button onclick="scrollToSection('team')" class="block transition hover:text-white">Our Team</button>
-            <button onclick="scrollToSection('services')" class="block transition hover:text-white">Services</button>
-            <button onclick="scrollToSection('contact')" class="block transition hover:text-white">Contact</button>
-          </div>
-        </div>
+      <!-- ================================================================ -->
+      <!-- FOOTER -->
+      <!-- ================================================================ -->
 
-        <div>
-          <div class="mb-5 text-xs font-semibold uppercase tracking-widest text-white/30">Solutions</div>
-          <div class="space-y-3 text-sm text-white/45">
-            <button onclick="scrollToSection('solutions')" class="block transition hover:text-white">Digital Products</button>
-            <button onclick="scrollToSection('aidlc')" class="block transition hover:text-white">AIDLC</button>
-            <button onclick="scrollToSection('technology')" class="block transition hover:text-white">AI & Automation</button>
-            <button onclick="scrollToSection('technology')" class="block transition hover:text-white">Cloud & DevOps</button>
-          </div>
-        </div>
+      <footer
+        class="border-t border-white/10 bg-[#04060c] px-5 py-14 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl">
 
-        <div>
-          <div class="mb-5 text-xs font-semibold uppercase tracking-widest text-white/30">Resources</div>
-          <div class="space-y-3 text-sm text-white/45">
-            <a href="/certificate/verify" class="flex items-center gap-2 transition hover:text-white"><i data-lucide="award" class="h-[15px] w-[15px]"></i>Verify Certificate</a>
-            <button onclick="openAuth('login')" class="block transition hover:text-white">Login</button>
-            <button onclick="openAuth('signup')" class="block transition hover:text-white">Get Started</button>
-            <button onclick="scrollToSection('technology')" class="block transition hover:text-white">Technology</button>
-          </div>
-        </div>
+          <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-5">
 
-      </div>
+            <div class="lg:col-span-2">
+              <div class="flex items-center gap-3">
+                <div
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-black"><i
+                    data-lucide="code-2" class="h-5 w-5"></i></div>
+                <div>
+                  <div class="font-semibold">Codelaunch Technologies</div>
+                  <div class="text-xs text-white/35">Engineering the digital
+                    future</div>
+                </div>
+              </div>
 
-      <!-- CONTACT DETAILS -->
-      <div class="mt-12 rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:p-6">
-        <div class="grid gap-5 md:grid-cols-3">
+              <p class="mt-5 max-w-md text-sm leading-7 text-white/35">
+                Digital engineering, enterprise integration, cloud platforms, AI
+                and automation for organizations building the future.
+              </p>
 
-          <a href="mailto:info@codelaunchtechnologies.com" class="group flex min-w-0 items-start gap-4">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/50"><i data-lucide="mail" class="h-[17px] w-[17px]"></i></div>
-            <div class="min-w-0"><div class="text-xs uppercase tracking-widest text-white/25">Email</div><div class="mt-1 truncate text-sm text-white/55 transition group-hover:text-white">info@codelaunchtechnologies.com</div></div>
-          </a>
+              <p class="mt-5 max-w-md text-sm leading-7 text-white/35">
+                <a href="https://www.codelaunchtechnologies.com" target="_blank"
+                  rel="noopener noreferrer" class="transition hover:text-white">
+                  www.codelaunchtechnologies.com
+                </a>
+              </p>
 
-          <button onclick="openWhatsApp()" class="group flex min-w-0 items-start gap-4 text-left">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/50"><i data-lucide="message-circle" class="h-[17px] w-[17px]"></i></div>
-            <div class="min-w-0"><div class="text-xs uppercase tracking-widest text-white/25">WhatsApp</div><div class="mt-1 text-sm text-white/55 transition group-hover:text-white">+91 9226283699</div></div>
-          </button>
+              <div class="mt-6 flex items-center gap-3">
+                <a href="https://www.linkedin.com/company/135757823"
+                  target="_blank" rel="noopener noreferrer"
+                  aria-label="Codelaunch Technologies on LinkedIn"
+                  class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/45 transition hover:bg-white/10 hover:text-white">
+                  <span class="text-sm font-bold leading-none">in</span>
+                </a>
 
-          <a href="https://www.linkedin.com/company/135757823" target="_blank" rel="noopener noreferrer" class="group flex min-w-0 items-start gap-4">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/50"><span class="text-sm font-bold leading-none">in</span></div>
-            <div class="min-w-0"><div class="text-xs uppercase tracking-widest text-white/25">LinkedIn</div><div class="mt-1 flex items-center gap-1 text-sm text-white/55 transition group-hover:text-white">Codelaunch Technologies <i data-lucide="external-link" class="h-3 w-3"></i></div></div>
-          </a>
+                <button onclick="openWhatsApp()"
+                  aria-label="Contact Codelaunch on WhatsApp"
+                  class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/45 transition hover:bg-white/10 hover:text-white">
+                  <i data-lucide="message-circle" class="h-[17px] w-[17px]"></i>
+                </button>
 
-        </div>
+                <a href="mailto:info@codelaunchtechnologies.com"
+                  aria-label="Email Codelaunch Technologies"
+                  class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/45 transition hover:bg-white/10 hover:text-white">
+                  <i data-lucide="mail" class="h-[17px] w-[17px]"></i>
+                </a>
+              </div>
+            </div>
 
-        <div class="mt-5 border-t border-white/10 pt-5">
-          <div class="flex items-start gap-4">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/50"><i data-lucide="map-pin" class="h-[17px] w-[17px]"></i></div>
             <div>
-              <div class="text-xs uppercase tracking-widest text-white/25">Office</div>
-              <div class="mt-1 text-sm leading-6 text-white/45">Pune, Maharashtra, India, 412101</div>
+              <div
+                class="mb-5 text-xs font-semibold uppercase tracking-widest text-white/30">Company</div>
+              <div class="space-y-3 text-sm text-white/45">
+                <button onclick="scrollToSection('about')"
+                  class="block transition hover:text-white">About</button>
+                <button onclick="scrollToSection('team')"
+                  class="block transition hover:text-white">Our Team</button>
+                <button onclick="scrollToSection('services')"
+                  class="block transition hover:text-white">Services</button>
+                <button onclick="scrollToSection('contact')"
+                  class="block transition hover:text-white">Contact</button>
+              </div>
+            </div>
+
+            <div>
+              <div
+                class="mb-5 text-xs font-semibold uppercase tracking-widest text-white/30">Solutions</div>
+              <div class="space-y-3 text-sm text-white/45">
+                <button onclick="scrollToSection('solutions')"
+                  class="block transition hover:text-white">Digital
+                  Products</button>
+                <button onclick="scrollToSection('aidlc')"
+                  class="block transition hover:text-white">AIDLC</button>
+                <button onclick="scrollToSection('technology')"
+                  class="block transition hover:text-white">AI &
+                  Automation</button>
+                <button onclick="scrollToSection('technology')"
+                  class="block transition hover:text-white">Cloud &
+                  DevOps</button>
+              </div>
+            </div>
+
+            <div>
+              <div
+                class="mb-5 text-xs font-semibold uppercase tracking-widest text-white/30">Resources</div>
+              <div class="space-y-3 text-sm text-white/45">
+                <!-- <a href="/certificate/verify"
+                  class="flex items-center gap-2 transition hover:text-white"><i
+                    data-lucide="award" class="h-[15px] w-[15px]"></i>Verify
+                  Certificate</a>
+                <button onclick="openAuth('login')"
+                  class="block transition hover:text-white">Login</button>
+                <button onclick="openAuth('signup')"
+                  class="block transition hover:text-white">Get Started</button> -->
+                <button onclick="scrollToSection('technology')"
+                  class="block transition hover:text-white">Technology</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- CONTACT DETAILS -->
+          <div
+            class="mt-12 rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:p-6">
+            <div class="grid gap-5 md:grid-cols-3">
+
+              <a href="mailto:info@codelaunchtechnologies.com"
+                class="group flex min-w-0 items-start gap-4">
+                <div
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/50"><i
+                    data-lucide="mail" class="h-[17px] w-[17px]"></i></div>
+                <div class="min-w-0"><div
+                    class="text-xs uppercase tracking-widest text-white/25">Email</div><div
+                    class="mt-1 truncate text-sm text-white/55 transition group-hover:text-white">info@codelaunchtechnologies.com</div></div>
+              </a>
+
+              <button onclick="openWhatsApp()"
+                class="group flex min-w-0 items-start gap-4 text-left">
+                <div
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/50"><i
+                    data-lucide="message-circle"
+                    class="h-[17px] w-[17px]"></i></div>
+                <div class="min-w-0"><div
+                    class="text-xs uppercase tracking-widest text-white/25">WhatsApp</div><div
+                    class="mt-1 text-sm text-white/55 transition group-hover:text-white">+91
+                    9226283699</div></div>
+              </button>
+
+              <a href="https://www.linkedin.com/company/135757823"
+                target="_blank" rel="noopener noreferrer"
+                class="group flex min-w-0 items-start gap-4">
+                <div
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/50"><span
+                    class="text-sm font-bold leading-none">in</span></div>
+                <div class="min-w-0"><div
+                    class="text-xs uppercase tracking-widest text-white/25">LinkedIn</div><div
+                    class="mt-1 flex items-center gap-1 text-sm text-white/55 transition group-hover:text-white">Codelaunch
+                    Technologies <i data-lucide="external-link"
+                      class="h-3 w-3"></i></div></div>
+              </a>
+
+            </div>
+
+            <div class="mt-5 border-t border-white/10 pt-5">
+              <div class="flex items-start gap-4">
+                <div
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/50"><i
+                    data-lucide="map-pin" class="h-[17px] w-[17px]"></i></div>
+                <div>
+                  <div
+                    class="text-xs uppercase tracking-widest text-white/25">Office</div>
+                  <div class="mt-1 text-sm leading-6 text-white/45">Pune,
+                    Maharashtra, India, 412101</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="mt-5 border-t border-white/10 pt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><div
+                  class="text-xs uppercase tracking-widest text-white/25">Company
+                  Phone</div><a href="tel:+919226283699"
+                  class="mt-1 block text-sm text-white/55 hover:text-white">+91
+                  9226283699</a></div>
+              <div><div
+                  class="text-xs uppercase tracking-widest text-white/25">Enquiry</div><a
+                  href="tel:+917999139862"
+                  class="mt-1 block text-sm text-white/55 hover:text-white">+91
+                  7999139862</a><a href="tel:+917974291753"
+                  class="block text-sm text-white/55 hover:text-white">+91
+                  7974291753</a><a href="tel:+917225960304"
+                  class="block text-sm text-white/55 hover:text-white">+91
+                  7225960304</a></div>
+              <div><div
+                  class="text-xs uppercase tracking-widest text-white/25">HR</div><a
+                  href="tel:+917898311081"
+                  class="mt-1 block text-sm text-white/55 hover:text-white">+91
+                  7898311081</a></div>
+            </div>
+
+            <div
+              class="mt-5 border-t border-white/10 pt-5 grid gap-2 sm:grid-cols-2">
+              <a href="mailto:accounts@codelaunchtechnologies.com"
+                class="text-sm text-white/45 hover:text-white">accounts@codelaunchtechnologies.com</a>
+              <a href="mailto:contact@codelaunchtechnologies.com"
+                class="text-sm text-white/45 hover:text-white">contact@codelaunchtechnologies.com</a>
+              <a href="mailto:hr@codelaunchtechnologies.com"
+                class="text-sm text-white/45 hover:text-white">hr@codelaunchtechnologies.com</a>
+              <a href="mailto:info@codelaunchtechnologies.com"
+                class="text-sm text-white/45 hover:text-white">info@codelaunchtechnologies.com</a>
             </div>
           </div>
+
+          <div
+            class="mt-10 flex flex-col justify-between gap-5 border-t border-white/10 pt-7 text-xs text-white/30 sm:flex-row sm:items-center">
+            <div>© <span id="year"></span> Codelaunch Technologies. All rights
+              reserved.</div>
+            <div
+              class="flex flex-wrap gap-x-5 gap-y-2"><span>Engineering</span><span>Integration</span><span>Cloud</span><span>AI</span><span>AIDLC</span></div>
+          </div>
+
+        </div>
+      </footer>
+
+    </main>
+
+    <!-- ================================================================ -->
+    <!-- AUTH MODAL -->
+    <!-- ================================================================ -->
+
+    <div id="auth-modal"
+      class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/75 px-5 backdrop-blur-md">
+      <div
+        class="relative w-full max-w-md rounded-3xl border border-white/10 bg-[#080c1a] p-7 shadow-2xl">
+        <button onclick="closeAuth()"
+          class="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60 hover:text-white">
+          <i data-lucide="x" class="h-4 w-4"></i>
+        </button>
+
+        <div class="mb-7">
+          <div
+            class="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-black"><i
+              data-lucide="code-2"></i></div>
+          <h3 id="auth-title" class="mt-5 text-2xl font-bold">Sign In</h3>
+          <p id="auth-subtitle" class="mt-2 text-sm text-white/40">Sign in to
+            your Codelaunch account.</p>
         </div>
 
-        <div class="mt-5 border-t border-white/10 pt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div><div class="text-xs uppercase tracking-widest text-white/25">Company Phone</div><a href="tel:+919226283699" class="mt-1 block text-sm text-white/55 hover:text-white">+91 9226283699</a></div>
-          <div><div class="text-xs uppercase tracking-widest text-white/25">Enquiry</div><a href="tel:+917999139862" class="mt-1 block text-sm text-white/55 hover:text-white">+91 7999139862</a><a href="tel:+917974291753" class="block text-sm text-white/55 hover:text-white">+91 7974291753</a><a href="tel:+917225960304" class="block text-sm text-white/55 hover:text-white">+91 7225960304</a></div>
-          <div><div class="text-xs uppercase tracking-widest text-white/25">HR</div><a href="tel:+917898311081" class="mt-1 block text-sm text-white/55 hover:text-white">+91 7898311081</a></div>
+        <form onsubmit="handleAuth(event)" class="space-y-4">
+          <div id="name-field" class="hidden">
+            <label class="mb-2 block text-xs text-white/40">Full Name</label>
+            <input id="auth-name" type="text"
+              class="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none focus:border-white/30"
+              placeholder="Your name">
+          </div>
+
+          <div>
+            <label class="mb-2 block text-xs text-white/40">Email
+              Address</label>
+            <input id="auth-email" type="email" required
+              class="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none focus:border-white/30"
+              placeholder="you@example.com">
+          </div>
+
+          <div>
+            <label class="mb-2 block text-xs text-white/40">Password</label>
+            <input id="auth-password" type="password" required
+              class="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none focus:border-white/30"
+              placeholder="••••••••">
+          </div>
+
+          <button id="auth-submit" type="submit"
+            class="w-full rounded-xl bg-white py-3.5 text-sm font-semibold text-black transition hover:bg-white/90">
+            Sign In
+          </button>
+        </form>
+
+        <div class="mt-5 text-center text-xs text-white/35">
+          <span id="auth-switch-text">New to Codelaunch?</span>
+          <button id="auth-switch" onclick="switchAuthMode()"
+            class="ml-1 text-white hover:underline">Create account</button>
         </div>
-
-        <div class="mt-5 border-t border-white/10 pt-5 grid gap-2 sm:grid-cols-2">
-          <a href="mailto:accounts@codelaunchtechnologies.com" class="text-sm text-white/45 hover:text-white">accounts@codelaunchtechnologies.com</a>
-          <a href="mailto:contact@codelaunchtechnologies.com" class="text-sm text-white/45 hover:text-white">contact@codelaunchtechnologies.com</a>
-          <a href="mailto:hr@codelaunchtechnologies.com" class="text-sm text-white/45 hover:text-white">hr@codelaunchtechnologies.com</a>
-          <a href="mailto:info@codelaunchtechnologies.com" class="text-sm text-white/45 hover:text-white">info@codelaunchtechnologies.com</a>
-        </div>
       </div>
-
-      <div class="mt-10 flex flex-col justify-between gap-5 border-t border-white/10 pt-7 text-xs text-white/30 sm:flex-row sm:items-center">
-        <div>© <span id="year"></span> Codelaunch Technologies. All rights reserved.</div>
-        <div class="flex flex-wrap gap-x-5 gap-y-2"><span>Engineering</span><span>Integration</span><span>Cloud</span><span>AI</span><span>AIDLC</span></div>
-      </div>
-
-    </div>
-  </footer>
-
-</main>
-
-<!-- ================================================================ -->
-<!-- AUTH MODAL -->
-<!-- ================================================================ -->
-
-<div id="auth-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/75 px-5 backdrop-blur-md">
-  <div class="relative w-full max-w-md rounded-3xl border border-white/10 bg-[#080c1a] p-7 shadow-2xl">
-    <button onclick="closeAuth()" class="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/60 hover:text-white">
-      <i data-lucide="x" class="h-4 w-4"></i>
-    </button>
-
-    <div class="mb-7">
-      <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-black"><i data-lucide="code-2"></i></div>
-      <h3 id="auth-title" class="mt-5 text-2xl font-bold">Sign In</h3>
-      <p id="auth-subtitle" class="mt-2 text-sm text-white/40">Sign in to your Codelaunch account.</p>
     </div>
 
-    <form onsubmit="handleAuth(event)" class="space-y-4">
-      <div id="name-field" class="hidden">
-        <label class="mb-2 block text-xs text-white/40">Full Name</label>
-        <input id="auth-name" type="text" class="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none focus:border-white/30" placeholder="Your name">
-      </div>
-
-      <div>
-        <label class="mb-2 block text-xs text-white/40">Email Address</label>
-        <input id="auth-email" type="email" required class="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none focus:border-white/30" placeholder="you@example.com">
-      </div>
-
-      <div>
-        <label class="mb-2 block text-xs text-white/40">Password</label>
-        <input id="auth-password" type="password" required class="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none focus:border-white/30" placeholder="••••••••">
-      </div>
-
-      <button id="auth-submit" type="submit" class="w-full rounded-xl bg-white py-3.5 text-sm font-semibold text-black transition hover:bg-white/90">
-        Sign In
-      </button>
-    </form>
-
-    <div class="mt-5 text-center text-xs text-white/35">
-      <span id="auth-switch-text">New to Codelaunch?</span>
-      <button id="auth-switch" onclick="switchAuthMode()" class="ml-1 text-white hover:underline">Create account</button>
-    </div>
-  </div>
-</div>
-
-<script>
+    <script>
   const WHATSAPP_NUMBER = "919226283699";
 
   function scrollToSection(id) {
@@ -880,7 +1504,7 @@
   lucide.createIcons();
 </script>
 
-<style>
+    <style>
   .tag {
     border-radius: 0.5rem;
     border: 1px solid rgba(255,255,255,.10);
@@ -892,5 +1516,5 @@
   }
 </style>
 
-</body>
+  </body>
 </html>
