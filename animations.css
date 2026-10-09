@@ -238,23 +238,54 @@ body main:not(.landing-main) > section:not(:first-of-type) {
   }
 
   .hero-float {
-    animation: hero-float 5s ease-in-out infinite;
+    left: 50%;
+    top: 50%;
+    offset-anchor: center;
+    offset-rotate: 0deg;
+    offset-position: normal;
+    animation: hero-chip-orbit 48s linear infinite;
+  }
+
+  .hero-float-outer {
+    offset-path: circle(40% at 50% 50%);
+  }
+
+  .hero-float-inner {
+    offset-path: circle(31% at 50% 50%);
+    animation-direction: reverse;
+    animation-duration: 38s;
+  }
+
+  .hero-float-one {
+    animation-delay: 0s;
   }
 
   .hero-float-two {
-    animation-delay: -1.2s;
+    animation-delay: -4.75s;
   }
 
   .hero-float-three {
-    animation-delay: -2.4s;
+    animation-delay: -12s;
   }
 
   .hero-float-four {
-    animation-delay: -3.6s;
+    animation-delay: -14s;
   }
 
   .hero-float-five {
-    animation-delay: -4.2s;
+    animation-delay: -24s;
+  }
+
+  .hero-float-six {
+    animation-delay: -23s;
+  }
+
+  .hero-float-seven {
+    animation-delay: -36s;
+  }
+
+  .hero-float-eight {
+    animation-delay: -33s;
   }
 
 }
@@ -268,24 +299,12 @@ body main:not(.landing-main) > section:not(:first-of-type) {
     padding-block: 3rem !important;
   }
 
-  .hero-visual .hero-float-one {
-    top: 15%;
-    left: 0;
+  .hero-float-outer {
+    offset-path: circle(40% at 50% 50%);
   }
 
-  .hero-visual .hero-float-two {
-    top: 15%;
-    right: 0;
-  }
-
-  .hero-visual .hero-float-three {
-    bottom: 16px;
-    left: 0;
-  }
-
-  .hero-visual .hero-float-four {
-    right: 0;
-    bottom: 16px;
+  .hero-float-inner {
+    offset-path: circle(30% at 50% 50%);
   }
 }
 
@@ -305,14 +324,13 @@ body main:not(.landing-main) > section:not(:first-of-type) {
   }
 }
 
-@keyframes hero-float {
-  0%,
-  100% {
-    translate: 0 0;
+@keyframes hero-chip-orbit {
+  from {
+    offset-distance: 0%;
   }
 
-  50% {
-    translate: 0 -7px;
+  to {
+    offset-distance: 100%;
   }
 }
 
