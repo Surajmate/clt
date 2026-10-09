@@ -2,6 +2,162 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  color-scheme: dark;
+  --page-bg: #050816;
+  --surface: #0b1020;
+  --surface-soft: rgba(255, 255, 255, .04);
+  --text-color: #fff;
+  --muted-color: rgba(255, 255, 255, .58);
+  --border-color: rgba(255, 255, 255, .1);
+  --header-color: rgba(5, 8, 22, .9);
+  --accent-color: #fff;
+  --accent-text-color: #050816;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --page-bg: #f4f6fb;
+  --surface: #fff;
+  --surface-soft: rgba(20, 30, 55, .045);
+  --text-color: #151a2a;
+  --muted-color: rgba(21, 26, 42, .66);
+  --border-color: rgba(21, 26, 42, .13);
+  --header-color: rgba(244, 246, 251, .92);
+  --accent-color: #151a2a;
+  --accent-text-color: #fff;
+}
+
+html[data-theme="colorful"] {
+  color-scheme: dark;
+  --page-bg: #0b0820;
+  --surface: #17122f;
+  --surface-soft: rgba(167, 139, 250, .08);
+  --text-color: #fff;
+  --muted-color: rgba(230, 224, 255, .68);
+  --border-color: rgba(196, 181, 253, .2);
+  --header-color: rgba(11, 8, 32, .92);
+  --accent-color: #a78bfa;
+  --accent-text-color: #160d30;
+}
+
+body,
+body main {
+  background-color: var(--page-bg) !important;
+  color: var(--text-color) !important;
+}
+
+body header {
+  border-color: var(--border-color) !important;
+  background-color: var(--header-color) !important;
+}
+
+body footer {
+  border-color: var(--border-color) !important;
+  background-color: var(--surface) !important;
+}
+
+body [class*="bg-[#"] {
+  background-color: var(--surface) !important;
+}
+
+body main[class*="bg-[#"] {
+  background-color: var(--page-bg) !important;
+}
+
+body [class*="bg-white/"][class*="border"] {
+  background-color: var(--surface-soft) !important;
+}
+
+body [class~="bg-white"] {
+  background-color: var(--accent-color) !important;
+  color: var(--accent-text-color) !important;
+}
+
+body [class*="text-white/"] {
+  color: var(--muted-color) !important;
+}
+
+body [class~="text-white"] {
+  color: var(--text-color) !important;
+}
+
+body [class*="border-white/"] {
+  border-color: var(--border-color) !important;
+}
+
+body .hero-core-icon {
+  color: var(--accent-text-color);
+}
+
+body .theme-control {
+  border-color: var(--border-color);
+  background-color: var(--surface-soft);
+}
+
+body .theme-select,
+body .theme-select option {
+  color: var(--text-color);
+}
+
+body .theme-select option {
+  background-color: var(--surface);
+}
+
+body .project-card,
+body .career-card {
+  border-color: var(--border-color);
+  background-color: var(--surface-soft);
+}
+
+.project-card {
+  transition: transform 220ms ease, border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.project-icon {
+  display: flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: .8rem;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 60;
+  display: flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: .9rem;
+  background: var(--surface);
+  color: var(--text-color);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(.5rem);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.landing-main > section:not(#home) {
+  padding-block: clamp(3.5rem, 7vw, 5.5rem) !important;
+}
+
+body main:not(.landing-main) > section:not(:first-of-type) {
+  padding-block: clamp(3rem, 6vw, 4.5rem) !important;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html.has-reveal [data-reveal] {
     opacity: 0;
@@ -23,6 +179,11 @@ html {
     transform: translateY(-5px);
     border-color: rgba(255, 255, 255, .24);
     background-color: rgba(255, 255, 255, .055);
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-color);
   }
 
   .career-orb {
@@ -86,6 +247,37 @@ html {
   .hero-float-five {
     animation-delay: -4.2s;
   }
+
+}
+
+@media (max-width: 639px) {
+  .landing-main > section:not(#home) {
+    padding-block: 3.5rem !important;
+  }
+
+  body main:not(.landing-main) > section:not(:first-of-type) {
+    padding-block: 3rem !important;
+  }
+
+  .hero-visual .hero-float-one {
+    top: 15%;
+    left: 0;
+  }
+
+  .hero-visual .hero-float-two {
+    top: 15%;
+    right: 0;
+  }
+
+  .hero-visual .hero-float-three {
+    bottom: 16px;
+    left: 0;
+  }
+
+  .hero-visual .hero-float-four {
+    right: 0;
+    bottom: 16px;
+  }
 }
 
 @keyframes career-drift {
@@ -107,11 +299,11 @@ html {
 @keyframes hero-float {
   0%,
   100% {
-    transform: translateY(0);
+    translate: 0 0;
   }
 
   50% {
-    transform: translateY(-7px);
+    translate: 0 -7px;
   }
 }
 

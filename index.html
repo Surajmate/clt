@@ -97,6 +97,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta name="theme-color" content="#050816" />
+    <script>
+      try {
+        var savedTheme = localStorage.getItem("clt-theme");
+        if (["dark", "light", "colorful"].includes(savedTheme)) {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (error) {}
+    </script>
 
     <meta name="format-detection" content="telephone=yes" />
     <!-- Favivon -->
@@ -168,7 +176,7 @@
 
   <body class="bg-[#050816] text-white">
 
-    <main class="min-h-screen overflow-x-hidden bg-[#050816] text-white">
+    <main class="landing-main min-h-screen overflow-x-hidden bg-[#050816] text-white">
 
       <!-- ================================================================ -->
       <!-- NAVBAR -->
@@ -181,10 +189,7 @@
 
           <button type="button" onclick="scrollToSection('home')"
             class="flex items-center gap-3">
-            <div
-              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-black">
-              <i data-lucide="code-2" class="h-[22px] w-[22px]"></i>
-            </div>
+            <img src="logo.png" alt="CodeLaunch Technologies" class="h-10 w-10 shrink-0 rounded-xl object-cover">
             <div class="text-left">
               <div class="text-lg font-bold tracking-tight">Codelaunch</div>
               <div
@@ -193,7 +198,7 @@
           </button>
 
           <!-- DESKTOP NAV -->
-          <nav class="hidden items-center gap-7 md:flex">
+          <nav class="hidden items-center gap-4 xl:flex">
             <button onclick="scrollToSection('solutions')"
               class="text-sm text-white/70 transition hover:text-white">Solutions</button>
             <button onclick="scrollToSection('services')"
@@ -202,15 +207,24 @@
               class="text-sm text-white/70 transition hover:text-white">AIDLC</button>
             <button onclick="scrollToSection('technology')"
               class="text-sm text-white/70 transition hover:text-white">Technology</button>
+            <button onclick="scrollToSection('work')"
+              class="text-sm text-white/70 transition hover:text-white">Our Work</button>
             <button onclick="scrollToSection('team')"
               class="text-sm text-white/70 transition hover:text-white">Team</button>
+            <a href="careers.html"
+              class="text-sm text-white/70 transition hover:text-white">Careers</a>
 
-            <!-- <a href="/certificate/verify"
-              class="flex items-center gap-1.5 text-sm text-white/70 transition hover:text-white">
-              <i data-lucide="award" class="h-[15px] w-[15px]"></i> Verify
-            </a> -->
+            <label class="theme-control inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 py-2 text-white/70">
+              <i data-lucide="palette" class="h-4 w-4"></i>
+              <select data-theme-select aria-label="Choose color theme" class="theme-select max-w-[88px] bg-transparent text-xs outline-none">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="colorful">Colorful</option>
+              </select>
+            </label>
 
             <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank"
+              rel="noopener noreferrer"
               class="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-white/90">
               Register for MERN Stack
             </a>
@@ -219,14 +233,14 @@
           <!-- MOBILE MENU BUTTON -->
           <button type="button" aria-label="Open menu"
             onclick="toggleMobileMenu()"
-            class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 md:hidden">
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 xl:hidden">
             <i id="mobile-menu-icon" data-lucide="menu" class="h-5 w-5"></i>
           </button>
         </div>
 
         <!-- MOBILE MENU -->
         <div id="mobile-menu"
-          class="hidden border-t border-white/10 bg-[#050816] md:hidden">
+          class="hidden border-t border-white/10 bg-[#050816] xl:hidden">
           <div class="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-5 sm:px-6">
             <button onclick="scrollToSection('solutions')"
               class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Solutions</button>
@@ -238,8 +252,22 @@
               class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Technology</button>
             <button onclick="scrollToSection('team')"
               class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Team</button>
+            <a href="#work" onclick="closeMobileMenu()"
+              class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Our Work</a>
+            <a href="careers.html"
+              class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Careers</a>
             <button onclick="scrollToSection('about')"
               class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">About</button>
+            <label class="theme-control mx-3 my-2 inline-flex items-center gap-2 self-start rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white/70">
+              <i data-lucide="palette" class="h-4 w-4"></i>
+              <select data-theme-select aria-label="Choose color theme" class="theme-select bg-transparent outline-none">
+                <option value="dark">Dark theme</option>
+                <option value="light">Light theme</option>
+                <option value="colorful">Colorful theme</option>
+              </select>
+            </label>
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer"
+              class="mt-2 rounded-lg bg-white px-4 py-3 text-center text-sm font-semibold text-black transition hover:bg-white/90">Register for MERN Stack</a>
 
             <!-- <a href="/certificate/verify" onclick="closeMobileMenu()"
               class="flex items-center gap-2 rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">
@@ -270,7 +298,7 @@
           class="absolute right-0 top-20 h-[400px] w-[400px] rounded-full bg-blue-600/10 blur-[120px]"></div>
 
         <div
-          class="relative mx-auto grid w-full max-w-7xl items-center gap-16 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-2 lg:px-8">
+          class="relative mx-auto grid w-full max-w-7xl items-center gap-10 px-5 py-20 sm:gap-16 sm:px-6 sm:py-24 lg:grid-cols-2 lg:px-8">
 
           <div>
             <div
@@ -324,47 +352,47 @@
 
           <!-- HERO VISUAL -->
           <div
-            class="hero-visual relative hidden min-h-[500px] items-center justify-center lg:flex">
+            class="hero-visual relative flex min-h-[400px] items-center justify-center sm:min-h-[460px] lg:min-h-[500px]">
             <div
-              class="hero-orbit hero-orbit-inner absolute h-[360px] w-[360px] rounded-full border border-white/10"></div>
+              class="hero-orbit hero-orbit-inner absolute h-[220px] w-[220px] rounded-full border border-white/10 sm:h-[320px] sm:w-[320px] lg:h-[360px] lg:w-[360px]"></div>
             <div
-              class="hero-orbit hero-orbit-outer absolute h-[460px] w-[460px] rounded-full border border-white/5"></div>
+              class="hero-orbit hero-orbit-outer absolute h-[280px] w-[280px] rounded-full border border-white/5 sm:h-[400px] sm:w-[400px] lg:h-[460px] lg:w-[460px]"></div>
 
             <div
-              class="hero-core relative flex h-48 w-48 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl">
+              class="hero-core relative flex h-36 w-36 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl sm:h-40 sm:w-40 lg:h-48 lg:w-48">
               <div
-                class="hero-core-icon flex h-24 w-24 items-center justify-center rounded-2xl bg-white text-black">
-                <i data-lucide="code-2" class="h-12 w-12"></i>
+                class="hero-core-icon flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-black sm:h-20 sm:w-20 lg:h-24 lg:w-24">
+                <i data-lucide="code-2" class="h-9 w-9 lg:h-12 lg:w-12"></i>
               </div>
             </div>
 
             <div
-              class="hero-float hero-float-one absolute -left-2 top-20 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
+              class="hero-float hero-float-one absolute -left-2 top-20 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-3 py-2.5 shadow-xl backdrop-blur sm:px-4 sm:py-3">
               <i data-lucide="code-2" class="h-4 w-4 text-white/70"></i><span
                 class="text-sm text-white/70">Engineering</span>
             </div>
 
             <div
-              class="hero-float hero-float-two absolute -right-2 top-32 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
+              class="hero-float hero-float-two absolute -right-2 top-32 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-3 py-2.5 shadow-xl backdrop-blur sm:px-4 sm:py-3">
               <i data-lucide="network" class="h-4 w-4 text-white/70"></i><span
                 class="text-sm text-white/70">Integration</span>
             </div>
 
             <div
-              class="hero-float hero-float-three absolute bottom-24 left-8 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
+              class="hero-float hero-float-three absolute bottom-24 left-8 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-3 py-2.5 shadow-xl backdrop-blur sm:px-4 sm:py-3">
               <i data-lucide="cloud" class="h-4 w-4 text-white/70"></i><span
                 class="text-sm text-white/70">Cloud</span>
             </div>
 
             <div
-              class="hero-float hero-float-four absolute bottom-12 right-10 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
+              class="hero-float hero-float-four absolute bottom-12 right-10 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-3 py-2.5 shadow-xl backdrop-blur sm:px-4 sm:py-3">
               <i data-lucide="brain-circuit"
                 class="h-4 w-4 text-white/70"></i><span
                 class="text-sm text-white/70">AI Agents</span>
             </div>
 
             <div
-              class="hero-float hero-float-five absolute left-1/2 top-2 flex -translate-x-1/2 items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-4 py-3 shadow-xl backdrop-blur">
+              class="hero-float hero-float-five absolute left-1/2 top-2 flex -translate-x-1/2 items-center gap-2 rounded-xl border border-white/10 bg-[#0b1020]/90 px-3 py-2.5 shadow-xl backdrop-blur sm:px-4 sm:py-3">
               <i data-lucide="workflow" class="h-4 w-4 text-white/70"></i><span
                 class="text-sm text-white/70">AIDLC</span>
             </div>
@@ -827,6 +855,79 @@
       </section>
 
       <!-- ================================================================ -->
+      <!-- PROJECT CONCEPTS -->
+      <!-- ================================================================ -->
+
+      <section id="work" data-reveal
+        class="scroll-mt-20 px-5 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="max-w-3xl">
+            <div class="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-white/35">PROJECT EXAMPLES</div>
+            <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">Ideas we can bring to life.</h2>
+            <p class="mt-5 text-base leading-8 text-white/50 sm:text-lg">A sample of digital experiences our team can design and build across industries. These are example project concepts, not a list of named client launches.</p>
+          </div>
+
+          <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="project-card rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="project-icon bg-orange-400/10 text-orange-300"><i data-lucide="utensils"></i></div>
+              <h3 class="mt-5 text-lg font-semibold">Restaurant Menu &amp; Ordering</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">Digital menus, table ordering, and restaurant management.</p>
+            </article>
+            <article class="project-card rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="project-icon bg-sky-400/10 text-sky-300"><i data-lucide="map"></i></div>
+              <h3 class="mt-5 text-lg font-semibold">Travel Website</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">Destination discovery, itineraries, and booking journeys.</p>
+            </article>
+            <article class="project-card rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="project-icon bg-blue-400/10 text-blue-300"><i data-lucide="newspaper"></i></div>
+              <h3 class="mt-5 text-lg font-semibold">News Website</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">Editorial publishing with searchable, responsive story pages.</p>
+            </article>
+            <article class="project-card rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="project-icon bg-fuchsia-400/10 text-fuchsia-300"><i data-lucide="panels-top-left"></i></div>
+              <h3 class="mt-5 text-lg font-semibold">Landing Page Designs</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">Polished campaign pages designed to explain and convert.</p>
+            </article>
+            <article class="project-card rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="project-icon bg-red-400/10 text-red-300"><i data-lucide="car-front"></i></div>
+              <h3 class="mt-5 text-lg font-semibold">Automobile Websites</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">Vehicle catalogs, dealer sites, and enquiry experiences.</p>
+            </article>
+            <article class="project-card rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="project-icon bg-amber-400/10 text-amber-300"><i data-lucide="scissors"></i></div>
+              <h3 class="mt-5 text-lg font-semibold">Barber Shop Web App</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">Service listings, appointment booking, and shop scheduling.</p>
+            </article>
+            <article class="project-card rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="project-icon bg-emerald-400/10 text-emerald-300"><i data-lucide="car-taxi-front"></i></div>
+              <h3 class="mt-5 text-lg font-semibold">Cab Service Website</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">Ride requests, fare details, and driver coordination tools.</p>
+            </article>
+            <article class="project-card rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="project-icon bg-violet-400/10 text-violet-300"><i data-lucide="wallet-cards"></i></div>
+              <h3 class="mt-5 text-lg font-semibold">Payments App</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">Clear payment flows, transaction history, and account tools.</p>
+            </article>
+            <article class="project-card rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="project-icon bg-indigo-400/10 text-indigo-300"><i data-lucide="users-round"></i></div>
+              <h3 class="mt-5 text-lg font-semibold">HRMS</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">People operations, leave management, and employee self-service.</p>
+            </article>
+            <article class="project-card rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="project-icon bg-rose-400/10 text-rose-300"><i data-lucide="shopping-bag"></i></div>
+              <h3 class="mt-5 text-lg font-semibold">Food Ordering App</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">Restaurant discovery, cart, checkout, and order tracking.</p>
+            </article>
+            <article class="project-card rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+              <div class="project-icon bg-teal-400/10 text-teal-300"><i data-lucide="sparkles"></i></div>
+              <h3 class="mt-5 text-lg font-semibold">Cleaning &amp; Home Help</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">Service discovery, booking, and home-help scheduling.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================ -->
       <!-- TECHNOLOGY -->
       <!-- ================================================================ -->
 
@@ -1284,7 +1385,8 @@
       <!-- ================================================================ -->
 
       <footer
-        class="border-t border-white/10 bg-[#04060c] px-5 py-14 sm:px-6 lg:px-8">
+        data-site-footer
+        class="border-t border-white/10 bg-[#04060c] px-5 py-10 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-7xl">
 
           <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-5">
@@ -1565,7 +1667,7 @@
   }
 
   function openWhatsApp() {
-    window.open("https://wa.me/" + WHATSAPP_NUMBER, "_blank", "noopener,noreferrer");
+    window.location.assign("https://wa.me/" + WHATSAPP_NUMBER);
   }
 
   function toggleMobileMenu() {

@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#050816">
+    <script>
+      try {
+        var savedTheme = localStorage.getItem("clt-theme");
+        if (["dark", "light", "colorful"].includes(savedTheme)) {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (error) {}
+    </script>
     <meta name="description" content="Explore career opportunities at CodeLaunch Technologies and apply to join our software, integration, cloud, AI, and product teams.">
     <title>Careers | CodeLaunch Technologies</title>
     <link rel="icon" type="image/png" href="logo.png">
@@ -14,20 +22,47 @@
   <body class="bg-[#050816] text-white">
     <main class="min-h-screen overflow-x-hidden bg-[#050816] text-white">
       <header class="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#050816]/85 backdrop-blur-xl">
-        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
-          <a href="index.html" class="flex items-center gap-3" aria-label="CodeLaunch Technologies home">
-            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black">
-              <i data-lucide="code-2" class="h-[22px] w-[22px]"></i>
-            </span>
-            <span>
-              <span class="block text-lg font-bold tracking-tight">Codelaunch</span>
-              <span class="block text-[10px] uppercase tracking-[0.25em] text-white/50">Technologies</span>
-            </span>
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
+          <a href="index.html#home" class="flex shrink-0 items-center gap-3" aria-label="CodeLaunch Technologies home">
+            <img src="logo.png" alt="CodeLaunch Technologies" class="h-10 w-10 rounded-xl object-cover">
+            <span class="hidden text-sm font-semibold sm:block">Codelaunch Technologies</span>
           </a>
-          <a href="index.html" class="flex items-center gap-2 text-sm text-white/65 transition hover:text-white">
-            <i data-lucide="arrow-left" class="h-4 w-4"></i>
-            Back to home
-          </a>
+          <nav class="hidden items-center gap-4 xl:gap-6 xl:flex">
+            <a href="index.html#solutions" class="text-sm text-white/70 transition hover:text-white">Solutions</a>
+            <a href="index.html#services" class="text-sm text-white/70 transition hover:text-white">Services</a>
+            <a href="index.html#work" class="text-sm text-white/70 transition hover:text-white">Our Work</a>
+            <a href="index.html#team" class="text-sm text-white/70 transition hover:text-white">Team</a>
+            <a href="#opportunities" class="text-sm text-white/70 transition hover:text-white">Careers</a>
+            <label class="theme-control inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 py-2 text-white/70">
+              <i data-lucide="palette" class="h-4 w-4"></i>
+              <select data-theme-select aria-label="Choose color theme" class="theme-select max-w-[88px] bg-transparent text-xs outline-none">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="colorful">Colorful</option>
+              </select>
+            </label>
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-white/90">Register for MERN Stack</a>
+          </nav>
+          <button type="button" aria-label="Open menu" onclick="toggleMobileMenu()" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 xl:hidden">
+            <i id="mobile-menu-icon" data-lucide="menu" class="h-5 w-5"></i>
+          </button>
+        </div>
+        <div id="mobile-menu" class="hidden border-t border-white/10 bg-[#050816] xl:hidden">
+          <div class="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-6">
+            <a href="index.html#solutions" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Solutions</a>
+            <a href="index.html#services" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Services</a>
+            <a href="index.html#work" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Our Work</a>
+            <a href="#opportunities" onclick="closeMobileMenu()" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Careers</a>
+            <label class="theme-control mx-3 my-2 inline-flex items-center gap-2 self-start rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white/70">
+              <i data-lucide="palette" class="h-4 w-4"></i>
+              <select data-theme-select aria-label="Choose color theme" class="theme-select bg-transparent outline-none">
+                <option value="dark">Dark theme</option>
+                <option value="light">Light theme</option>
+                <option value="colorful">Colorful theme</option>
+              </select>
+            </label>
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer" class="mt-2 rounded-lg bg-white px-4 py-3 text-center text-sm font-semibold text-black transition hover:bg-white/90">Register for MERN Stack</a>
+          </div>
         </div>
       </header>
 
@@ -132,7 +167,7 @@
         </div>
       </section>
 
-      <footer class="border-t border-white/10 bg-[#04060c] px-5 py-8 sm:px-6 lg:px-8">
+      <footer data-site-footer class="border-t border-white/10 bg-[#04060c] px-5 py-10 sm:px-6 lg:px-8">
         <div class="mx-auto flex max-w-7xl flex-col justify-between gap-4 text-sm text-white/45 sm:flex-row sm:items-center">
           <a href="index.html" class="flex items-center gap-3 transition hover:text-white">
             <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-black"><i data-lucide="code-2" class="h-5 w-5"></i></span>
@@ -149,8 +184,6 @@
 
     <script src="animations.js"></script>
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-
       document.querySelectorAll("[data-apply-role]").forEach(function (link) {
         link.addEventListener("click", function (event) {
           event.preventDefault();
