@@ -93,10 +93,107 @@ body .hero-core-icon {
   background-color: var(--accent-color);
 }
 
+body .hero-visual {
+  isolation: isolate;
+}
+
+body .hero-visual::before,
+body .hero-visual::after {
+  position: absolute;
+  inset: 2%;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+}
+
+html:not([data-theme="light"]):not([data-theme="colorful"]) body .hero-visual::before {
+  opacity: .62;
+  background-image:
+    radial-gradient(1px 1px at 8% 18%, #fff 55%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 17% 72%, #d9d3ff 55%, transparent 100%),
+    radial-gradient(1px 1px at 27% 36%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 38% 88%, #c4b5fd 55%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 48% 12%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 61% 81%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 70% 29%, #d9d3ff 55%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 82% 62%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 93% 14%, #c4b5fd 55%, transparent 100%);
+}
+
+html:not([data-theme="light"]):not([data-theme="colorful"]) body .hero-visual::after {
+  opacity: .38;
+  background-image:
+    radial-gradient(1px 1px at 12% 52%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 23% 9%, #c4b5fd 55%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 34% 64%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 54% 42%, #d9d3ff 55%, transparent 100%),
+    radial-gradient(1px 1px at 67% 93%, #fff 55%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 77% 15%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 89% 45%, #c4b5fd 55%, transparent 100%);
+}
+
 body .hero-float {
+  left: 50%;
+  top: 50%;
+  offset-anchor: center;
+  offset-rotate: 0deg;
+  offset-position: normal;
+  offset-distance: var(--hero-orbit-start, 0%);
   cursor: grab;
   touch-action: none;
   user-select: none;
+}
+
+body .hero-float-outer {
+  offset-path: circle(40% at 50% 50%);
+}
+
+body .hero-float-inner {
+  offset-path: circle(31% at 50% 50%);
+}
+
+body .hero-orbit {
+  z-index: 1;
+}
+
+body .hero-core {
+  z-index: 2;
+}
+
+body .hero-float {
+  z-index: 3;
+}
+
+body .hero-float-one {
+  --hero-orbit-start: 0%;
+}
+
+body .hero-float-two {
+  --hero-orbit-start: 87.5%;
+}
+
+body .hero-float-three {
+  --hero-orbit-start: 50%;
+}
+
+body .hero-float-four {
+  --hero-orbit-start: 62.5%;
+}
+
+body .hero-float-five {
+  --hero-orbit-start: 25%;
+}
+
+body .hero-float-six {
+  --hero-orbit-start: 37.5%;
+}
+
+body .hero-float-seven {
+  --hero-orbit-start: 75%;
+}
+
+body .hero-float-eight {
+  --hero-orbit-start: 12.5%;
 }
 
 body .hero-float.is-dragging,
@@ -219,6 +316,15 @@ body main:not(.landing-main) > section:not(:first-of-type) {
     animation: career-drift 8s ease-in-out infinite alternate;
   }
 
+  html:not([data-theme="light"]):not([data-theme="colorful"]) body .hero-visual::before,
+  html:not([data-theme="light"]):not([data-theme="colorful"]) body .hero-visual::after {
+    animation: hero-stars-twinkle 4s ease-in-out infinite alternate;
+  }
+
+  html:not([data-theme="light"]):not([data-theme="colorful"]) body .hero-visual::after {
+    animation-delay: -2s;
+  }
+
   .hero-orbit {
     animation: hero-orbit-spin 32s linear infinite;
   }
@@ -258,20 +364,10 @@ body main:not(.landing-main) > section:not(:first-of-type) {
   }
 
   .hero-float {
-    left: 50%;
-    top: 50%;
-    offset-anchor: center;
-    offset-rotate: 0deg;
-    offset-position: normal;
     animation: hero-chip-orbit 48s linear infinite;
   }
 
-  .hero-float-outer {
-    offset-path: circle(40% at 50% 50%);
-  }
-
   .hero-float-inner {
-    offset-path: circle(31% at 50% 50%);
     animation-direction: reverse;
     animation-duration: 38s;
   }
@@ -319,11 +415,7 @@ body main:not(.landing-main) > section:not(:first-of-type) {
     padding-block: 3rem !important;
   }
 
-  .hero-float-outer {
-    offset-path: circle(40% at 50% 50%);
-  }
-
-  .hero-float-inner {
+  body .hero-float-inner {
     offset-path: circle(30% at 50% 50%);
   }
 }
@@ -373,6 +465,16 @@ body main:not(.landing-main) > section:not(:first-of-type) {
 
   50% {
     box-shadow: 0 0 28px 2px rgba(255, 255, 255, .14);
+  }
+}
+
+@keyframes hero-stars-twinkle {
+  from {
+    opacity: .28;
+  }
+
+  to {
+    opacity: .72;
   }
 }
 
