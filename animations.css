@@ -26,6 +26,9 @@ html[data-theme="light"] {
   --header-color: rgba(244, 246, 251, .92);
   --accent-color: #151a2a;
   --accent-text-color: #fff;
+  --tag-bg: #e7eaf1;
+  --tag-text: #354057;
+  --tag-border: #d1d7e2;
 }
 
 html[data-theme="colorful"] {
@@ -87,7 +90,7 @@ body [class*="border-white/"] {
 }
 
 body .hero-core-icon {
-  color: var(--accent-text-color);
+  background-color: var(--accent-color);
 }
 
 body .theme-control {
@@ -108,6 +111,12 @@ body .project-card,
 body .career-card {
   border-color: var(--border-color);
   background-color: var(--surface-soft);
+}
+
+html[data-theme="light"] #technology .tag {
+  border-color: var(--tag-border);
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
 }
 
 .project-card {
