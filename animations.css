@@ -117,7 +117,17 @@ html:not([data-theme="light"]):not([data-theme="colorful"]) body .hero-visual::b
     radial-gradient(1px 1px at 61% 81%, #fff 55%, transparent 100%),
     radial-gradient(1px 1px at 70% 29%, #d9d3ff 55%, transparent 100%),
     radial-gradient(1.5px 1.5px at 82% 62%, #fff 55%, transparent 100%),
-    radial-gradient(1px 1px at 93% 14%, #c4b5fd 55%, transparent 100%);
+    radial-gradient(1px 1px at 93% 14%, #c4b5fd 55%, transparent 100%),
+    radial-gradient(1px 1px at 5% 43%, #c4b5fd 55%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 13% 91%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 22% 56%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 32% 7%, #d9d3ff 55%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 43% 48%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 57% 26%, #c4b5fd 55%, transparent 100%),
+    radial-gradient(1px 1px at 65% 68%, #fff 55%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 74% 86%, #d9d3ff 55%, transparent 100%),
+    radial-gradient(1px 1px at 86% 34%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 96% 77%, #c4b5fd 55%, transparent 100%);
 }
 
 html:not([data-theme="light"]):not([data-theme="colorful"]) body .hero-visual::after {
@@ -129,7 +139,16 @@ html:not([data-theme="light"]):not([data-theme="colorful"]) body .hero-visual::a
     radial-gradient(1px 1px at 54% 42%, #d9d3ff 55%, transparent 100%),
     radial-gradient(1px 1px at 67% 93%, #fff 55%, transparent 100%),
     radial-gradient(1.5px 1.5px at 77% 15%, #fff 55%, transparent 100%),
-    radial-gradient(1px 1px at 89% 45%, #c4b5fd 55%, transparent 100%);
+    radial-gradient(1px 1px at 89% 45%, #c4b5fd 55%, transparent 100%),
+    radial-gradient(1px 1px at 4% 83%, #fff 55%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 19% 28%, #c4b5fd 55%, transparent 100%),
+    radial-gradient(1px 1px at 29% 96%, #d9d3ff 55%, transparent 100%),
+    radial-gradient(1px 1px at 41% 19%, #fff 55%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 51% 73%, #c4b5fd 55%, transparent 100%),
+    radial-gradient(1px 1px at 63% 8%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 72% 51%, #d9d3ff 55%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 84% 91%, #fff 55%, transparent 100%),
+    radial-gradient(1px 1px at 97% 25%, #c4b5fd 55%, transparent 100%);
 }
 
 body .hero-float {

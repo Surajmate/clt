@@ -29,6 +29,7 @@
   document.querySelectorAll("[data-theme-select]").forEach(function (select) {
     select.addEventListener("change", function () {
       applyTheme(select.value, true);
+      window.closeMobileMenu();
     });
   });
 
