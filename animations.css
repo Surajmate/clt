@@ -93,6 +93,26 @@ body .hero-core-icon {
   background-color: var(--accent-color);
 }
 
+body .hero-float {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+body .hero-float.is-dragging,
+body .hero-float.is-manually-positioned {
+  left: calc(50% + var(--drag-x, 0px));
+  top: calc(50% + var(--drag-y, 0px));
+  offset-path: none;
+  transform: translate(-50%, -50%);
+}
+
+body .hero-float.is-dragging {
+  z-index: 20;
+  cursor: grabbing;
+  transition: none;
+}
+
 body .theme-control {
   border-color: var(--border-color);
   background-color: var(--surface-soft);

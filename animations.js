@@ -139,6 +139,124 @@
     if (window.lucide) window.lucide.createIcons();
   }
 
+  var heroVisual = document.querySelector(".hero-visual");
+  if (heroVisual) {
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function setChipPosition(chip, x, y, persistPosition) {
+      chip.style.setProperty("--drag-x", x + "px");
+      chip.style.setProperty("--drag-y", y + "px");
+      if (persistPosition) {
+        chip.classList.add("is-manually-positioned");
+      }
+    }
+
+    function setOrbitPhase(chip, angle) {
+      var progress = (Math.atan2(Math.cos(angle), -Math.sin(angle)) / (Math.PI * 2) + 1) % 1;
+      var duration = parseFloat(window.getComputedStyle(chip).animationDuration);
+      if (!Number.isFinite(duration)) duration = 0;
+      chip.style.animationDelay = "-" + duration * progress + "s";
+    }
+
+    function positionForAngle(chip, angle) {
+      var visualBounds = heroVisual.getBoundingClientRect();
+      var chipBounds = chip.getBoundingClientRect();
+      var x = chipBounds.left + chipBounds.width / 2 - (visualBounds.left + visualBounds.width / 2);
+      var y = chipBounds.top + chipBounds.height / 2 - (visualBounds.top + visualBounds.height / 2);
+      var radius = Math.hypot(x, y);
+      return { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius };
+    }
+
+    heroVisual.querySelectorAll(".hero-float").forEach(function (chip) {
+      var label = chip.textContent.trim();
+      chip.setAttribute("role", "button");
+      chip.setAttribute("aria-label", "Drag to reposition " + label + " around the orbit");
+      chip.setAttribute("aria-keyshortcuts", "ArrowUp ArrowDown ArrowLeft ArrowRight");
+      chip.tabIndex = 0;
+
+      var dragState = null;
+
+      function finishDrag(event) {
+        if (!dragState || (event && event.pointerId !== dragState.pointerId)) return;
+        var state = dragState;
+        dragState = null;
+        chip.classList.remove("is-dragging");
+        chip.style.removeProperty("animation-play-state");
+
+        if (reducedMotion.matches) {
+          setChipPosition(chip, state.x, state.y, true);
+        } else {
+          chip.classList.remove("is-manually-positioned");
+          chip.style.removeProperty("--drag-x");
+          chip.style.removeProperty("--drag-y");
+          setOrbitPhase(chip, Math.atan2(state.y, state.x));
+        }
+      }
+
+      chip.addEventListener("pointerdown", function (event) {
+        if (!event.isPrimary || event.button !== 0) return;
+        var visualBounds = heroVisual.getBoundingClientRect();
+        var chipBounds = chip.getBoundingClientRect();
+        var centerX = visualBounds.left + visualBounds.width / 2;
+        var centerY = visualBounds.top + visualBounds.height / 2;
+        var chipX = chipBounds.left + chipBounds.width / 2;
+        var chipY = chipBounds.top + chipBounds.height / 2;
+
+        event.preventDefault();
+        chip.classList.remove("is-manually-positioned");
+        chip.classList.add("is-dragging");
+        chip.style.animationPlayState = "paused";
+        chip.setPointerCapture(event.pointerId);
+        dragState = {
+          pointerId: event.pointerId,
+          grabX: event.clientX - chipX,
+          grabY: event.clientY - chipY,
+          radius: Math.hypot(chipX - centerX, chipY - centerY),
+          x: chipX - centerX,
+          y: chipY - centerY
+        };
+      });
+
+      chip.addEventListener("pointermove", function (event) {
+        if (!dragState || event.pointerId !== dragState.pointerId) return;
+        var visualBounds = heroVisual.getBoundingClientRect();
+        var dx = event.clientX - dragState.grabX - (visualBounds.left + visualBounds.width / 2);
+        var dy = event.clientY - dragState.grabY - (visualBounds.top + visualBounds.height / 2);
+        var angle = Math.atan2(dy, dx);
+        dragState.x = Math.cos(angle) * dragState.radius;
+        dragState.y = Math.sin(angle) * dragState.radius;
+        setChipPosition(chip, dragState.x, dragState.y, false);
+      });
+
+      chip.addEventListener("pointerup", finishDrag);
+      chip.addEventListener("pointercancel", finishDrag);
+      chip.addEventListener("lostpointercapture", finishDrag);
+
+      chip.addEventListener("keydown", function (event) {
+        var step = {
+          ArrowRight: 0.08,
+          ArrowDown: 0.08,
+          ArrowLeft: -0.08,
+          ArrowUp: -0.08
+        }[event.key];
+        if (step === undefined) return;
+        event.preventDefault();
+
+        var visualBounds = heroVisual.getBoundingClientRect();
+        var chipBounds = chip.getBoundingClientRect();
+        var x = chipBounds.left + chipBounds.width / 2 - (visualBounds.left + visualBounds.width / 2);
+        var y = chipBounds.top + chipBounds.height / 2 - (visualBounds.top + visualBounds.height / 2);
+        var position = positionForAngle(chip, Math.atan2(y, x) + step);
+        if (reducedMotion.matches) {
+          setChipPosition(chip, position.x, position.y, true);
+        } else {
+          chip.classList.remove("is-manually-positioned");
+          setOrbitPhase(chip, Math.atan2(position.y, position.x));
+        }
+      });
+    });
+  }
+
   if (
     !("IntersectionObserver" in window) ||
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
