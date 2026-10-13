@@ -1,0 +1,44 @@
+CODELAUNCH TECHNOLOGIES
+PROJECT PLANNING CHECKLIST
+
+Use this checklist to prepare for a software project discovery conversation.
+You do not need to have every answer before getting started.
+
+1. THE PROBLEM
+[ ] What user or business problem are we solving?
+[ ] Who experiences the problem, and how do they handle it today?
+[ ] What outcome would make the project successful?
+[ ] Are there deadlines, launch dates, or regulatory constraints?
+
+2. USERS AND SCOPE
+[ ] Who will use the product? What roles and permissions are needed?
+[ ] What are the most important user journeys for the first release?
+[ ] What is explicitly out of scope for the first release?
+[ ] What accessibility, language, or device requirements apply?
+
+3. SYSTEMS AND DATA
+[ ] Which existing applications, APIs, or databases must connect?
+[ ] Are API specifications, test environments, or technical contacts available?
+[ ] What data is sensitive, regulated, or subject to retention rules?
+[ ] Who owns the data, and where may it be stored or processed?
+
+4. SECURITY AND RELIABILITY
+[ ] How should users and services authenticate?
+[ ] What authorization roles, audit trails, or approval steps are required?
+[ ] What availability, response-time, backup, and recovery targets matter?
+[ ] How will secrets be stored, rotated, and kept out of source control?
+
+5. DELIVERY AND OPERATIONS
+[ ] Which cloud, hosting, and technology constraints already exist?
+[ ] What environments are needed (development, test, staging, production)?
+[ ] Who reviews releases, and what are the deployment and rollback steps?
+[ ] Who will monitor, support, and maintain the solution after launch?
+
+6. NEXT STEPS
+[ ] Identify a business decision maker and technical point of contact.
+[ ] Gather relevant diagrams, contracts, sample data, and existing documentation.
+[ ] Agree on the first measurable milestone and how it will be accepted.
+[ ] List open questions, assumptions, risks, and dependencies.
+
+For a project conversation, visit:
+https://www.codelaunchtechnologies.com/#contact

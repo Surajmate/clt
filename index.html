@@ -187,7 +187,7 @@
           </button>
 
           <!-- DESKTOP NAV -->
-          <nav class="hidden items-center gap-4 xl:flex">
+          <nav aria-label="Main navigation" class="hidden items-center gap-4 xl:flex">
             <button onclick="scrollToSection('solutions')"
               class="text-sm text-white/70 transition hover:text-white">Solutions</button>
             <button onclick="scrollToSection('services')"
@@ -202,6 +202,8 @@
               class="text-sm text-white/70 transition hover:text-white">Team</button>
             <a href="careers.html"
               class="text-sm text-white/70 transition hover:text-white">Careers</a>
+            <a href="blog.html"
+              class="text-sm text-white/70 transition hover:text-white">Blog</a>
 
             <label class="theme-control inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 py-2 text-white/70">
               <i data-lucide="palette" class="h-4 w-4"></i>
@@ -212,7 +214,7 @@
               </select>
             </label>
 
-            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank"
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" data-conversion-event="course_registration_click"
               rel="noopener noreferrer"
               class="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-white/90">
               Register for MERN Stack
@@ -220,7 +222,7 @@
           </nav>
 
           <!-- MOBILE MENU BUTTON -->
-          <button type="button" aria-label="Open menu"
+          <button type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false"
             onclick="toggleMobileMenu()"
             class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 xl:hidden">
             <i id="mobile-menu-icon" data-lucide="menu" class="h-5 w-5"></i>
@@ -245,6 +247,8 @@
               class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Our Work</a> -->
             <a href="careers.html"
               class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Careers</a>
+            <a href="blog.html"
+              class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">Blog</a>
             <button onclick="scrollToSection('about')"
               class="rounded-lg px-3 py-3 text-left text-sm text-white/70 hover:bg-white/5 hover:text-white">About</button>
             <label class="theme-control mx-3 my-2 inline-flex items-center gap-2 self-start rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white/70">
@@ -255,7 +259,7 @@
                 <option value="colorful">Colorful theme</option>
               </select>
             </label>
-            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer"
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer" data-conversion-event="course_registration_click"
               class="mt-2 rounded-lg bg-white px-4 py-3 text-center text-sm font-semibold text-black transition hover:bg-white/90">Register for MERN Stack</a>
 
             <!-- <a href="/certificate/verify" onclick="closeMobileMenu()"
@@ -1383,10 +1387,69 @@
                 class="h-[18px] w-[18px] transition-transform group-hover:translate-x-1"></i>
             </button>
 
-            <a href="mailto:info@codelaunchtechnologies.com"
+            <a href="mailto:info@codelaunchtechnologies.com" data-conversion-event="email_contact_click"
               class="inline-flex items-center justify-center gap-3 rounded-xl border border-white/10 px-8 py-4 font-medium text-white transition hover:bg-white/5">
               <i data-lucide="mail" class="h-[18px] w-[18px]"></i> Email Us
             </a>
+          </div>
+
+          <div class="mx-auto mt-12 grid max-w-5xl gap-6 text-left lg:grid-cols-[1.2fr_0.8fr]">
+            <form onsubmit="handleProjectEnquiry(event)" class="rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8">
+              <h3 class="text-xl font-semibold">Tell us about your project</h3>
+              <p class="mt-2 text-sm leading-6 text-white/45">Share a few details and we’ll prepare an enquiry in your email app. Nothing is stored on this website.</p>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="enquiry-name" class="mb-2 block text-sm text-white/60">Your name</label>
+                  <input id="enquiry-name" name="name" type="text" autocomplete="name" required
+                    class="w-full rounded-xl border border-white/10 bg-[#080c1a] px-4 py-3 text-sm text-white outline-none focus:border-white/40">
+                </div>
+                <div>
+                  <label for="enquiry-email" class="mb-2 block text-sm text-white/60">Work email</label>
+                  <input id="enquiry-email" name="email" type="email" autocomplete="email" required
+                    class="w-full rounded-xl border border-white/10 bg-[#080c1a] px-4 py-3 text-sm text-white outline-none focus:border-white/40">
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="enquiry-service" class="mb-2 block text-sm text-white/60">What can we help with?</label>
+                  <select id="enquiry-service" name="service" required
+                    class="w-full rounded-xl border border-white/10 bg-[#080c1a] px-4 py-3 text-sm text-white outline-none focus:border-white/40">
+                    <option value="">Choose a service</option>
+                    <option>Digital product engineering</option>
+                    <option>API and enterprise integration</option>
+                    <option>Cloud and DevOps</option>
+                    <option>AI and automation</option>
+                    <option>Other / not sure yet</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="enquiry-details" class="mb-2 block text-sm text-white/60">A short project overview</label>
+                  <textarea id="enquiry-details" name="details" rows="4" required
+                    class="w-full resize-y rounded-xl border border-white/10 bg-[#080c1a] px-4 py-3 text-sm text-white outline-none focus:border-white/40"></textarea>
+                </div>
+              </div>
+              <button type="submit"
+                class="mt-5 inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:bg-white/90">
+                Prepare email enquiry <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+              </button>
+            </form>
+
+            <div class="flex flex-col gap-4">
+              <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8">
+                <h3 class="text-lg font-semibold">Start with a discovery call</h3>
+                <p class="mt-2 text-sm leading-6 text-white/45">Request a free 20–30 minute conversation about your goals, constraints, and next steps.</p>
+                <a href="mailto:info@codelaunchtechnologies.com?subject=Free%20project%20discovery%20call" data-conversion-event="discovery_call_request"
+                  class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white/75 transition hover:text-white">
+                  Request a call <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                </a>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-6 sm:p-8">
+                <h3 class="text-lg font-semibold">Plan your next project</h3>
+                <p class="mt-2 text-sm leading-6 text-white/45">Use this short checklist to organize goals, users, integrations, security, and launch requirements before a kickoff.</p>
+                <a href="project-planning-checklist.txt" download
+                  class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white/75 transition hover:text-white">
+                  Download project checklist <i data-lucide="download" class="h-4 w-4"></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1679,6 +1742,28 @@
 
   function openWhatsApp() {
     window.location.assign("https://wa.me/" + WHATSAPP_NUMBER);
+  }
+
+  function handleProjectEnquiry(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const fields = new FormData(form);
+    const subject = "Project enquiry - " + fields.get("service");
+    const body = [
+      "Hello CodeLaunch Technologies,",
+      "",
+      "Name: " + fields.get("name"),
+      "Email: " + fields.get("email"),
+      "Service: " + fields.get("service"),
+      "",
+      "Project overview:",
+      fields.get("details")
+    ].join("\r\n");
+    trackConversion("project_enquiry_email_open", {
+      service: fields.get("service")
+    });
+    window.location.href = "mailto:info@codelaunchtechnologies.com?subject="
+      + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
   }
 
   function toggleMobileMenu() {

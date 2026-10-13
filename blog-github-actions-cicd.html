@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      try {
+        var savedTheme = localStorage.getItem("clt-theme");
+        if (["dark", "light", "colorful"].includes(savedTheme)) {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (error) {
+        console.warn("Theme preference could not be restored.", error);
+      }
+    </script>
+    <meta name="theme-color" content="#050816">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="CodeLaunch Technologies">
+    <meta name="description" content="Set up a safer GitHub Actions CI workflow with pull-request checks, least-privilege permissions, locked dependencies, and protected deployment environments.">
+    <link rel="canonical" href="https://www.codelaunchtechnologies.com/blog-github-actions-cicd.html">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+    <link rel="stylesheet" href="animations.css">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:site_name" content="CodeLaunch Technologies">
+    <meta property="og:title" content="A safer CI/CD pipeline with GitHub Actions">
+    <meta property="og:description" content="Build a release workflow around tests, least-privilege permissions, protected environments, and verifiable artifacts.">
+    <meta property="og:url" content="https://www.codelaunchtechnologies.com/blog-github-actions-cicd.html">
+    <meta property="og:image" content="https://www.codelaunchtechnologies.com/logo.png">
+    <meta property="og:image:alt" content="CodeLaunch Technologies logo">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="A safer CI/CD pipeline with GitHub Actions">
+    <meta name="twitter:description" content="Build a release workflow around tests, least-privilege permissions, protected environments, and verifiable artifacts.">
+    <meta name="twitter:image" content="https://www.codelaunchtechnologies.com/logo.png">
+    <title>GitHub Actions CI/CD Guide | CodeLaunch Technologies</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "A safer CI/CD pipeline with GitHub Actions",
+        "description": "A practical introduction to secure, repeatable CI/CD with GitHub Actions.",
+        "datePublished": "2026-10-13",
+        "dateModified": "2026-10-13",
+        "author": {"@type": "Organization", "name": "CodeLaunch Technologies", "url": "https://www.codelaunchtechnologies.com/"},
+        "publisher": {"@type": "Organization", "name": "CodeLaunch Technologies", "url": "https://www.codelaunchtechnologies.com/"},
+        "mainEntityOfPage": "https://www.codelaunchtechnologies.com/blog-github-actions-cicd.html",
+        "inLanguage": "en-IN"
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-[#050816] text-white">
+    <main class="min-h-screen overflow-x-hidden bg-[#050816] text-white">
+      <header class="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#050816]/85 backdrop-blur-xl">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
+          <a href="index.html#home" class="flex shrink-0 items-center gap-3" aria-label="CodeLaunch Technologies home">
+            <img src="logo.png" alt="CodeLaunch Technologies" class="h-10 w-10 rounded-xl object-cover">
+            <span class="text-sm font-semibold">Codelaunch Technologies</span>
+          </a>
+          <nav aria-label="Main navigation" class="hidden items-center gap-3 text-sm xl:flex">
+            <a href="index.html#solutions" class="text-white/70 transition hover:text-white">Solutions</a>
+            <a href="index.html#services" class="text-white/70 transition hover:text-white">Services</a>
+            <a href="index.html#team" class="text-white/70 transition hover:text-white">Team</a>
+            <a href="careers.html" class="text-white/70 transition hover:text-white">Careers</a>
+            <a href="blog.html" class="text-white/70 transition hover:text-white">Guides</a>
+            <label class="theme-control inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 py-2 text-white/70">
+              <i data-lucide="palette" class="h-4 w-4"></i>
+              <select data-theme-select aria-label="Choose color theme" class="theme-select max-w-[88px] bg-transparent text-xs outline-none">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="colorful">Colorful</option>
+              </select>
+            </label>
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer" data-conversion-event="course_registration_click" class="whitespace-nowrap rounded-lg bg-white px-3 py-2 text-xs font-semibold text-black transition hover:bg-white/90">Register for MERN Stack</a>
+          </nav>
+          <button type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" onclick="toggleMobileMenu()" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 xl:hidden">
+            <i id="mobile-menu-icon" data-lucide="menu" class="h-5 w-5"></i>
+          </button>
+        </div>
+        <div id="mobile-menu" class="hidden border-t border-white/10 bg-[#050816] xl:hidden">
+          <nav aria-label="Mobile navigation" class="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-6">
+            <a href="index.html#solutions" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Solutions</a>
+            <a href="index.html#services" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Services</a>
+            <a href="index.html#team" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Team</a>
+            <a href="careers.html" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Careers</a>
+            <a href="blog.html" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Engineering guides</a>
+            <a href="index.html#contact" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Contact</a>
+            <label class="theme-control mx-3 my-2 inline-flex items-center gap-2 self-start rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white/70">
+              <i data-lucide="palette" class="h-4 w-4"></i>
+              <select data-theme-select aria-label="Choose color theme" class="theme-select bg-transparent outline-none">
+                <option value="dark">Dark theme</option>
+                <option value="light">Light theme</option>
+                <option value="colorful">Colorful theme</option>
+              </select>
+            </label>
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer" data-conversion-event="course_registration_click" class="mt-2 rounded-lg bg-white px-4 py-3 text-center text-sm font-semibold text-black transition hover:bg-white/90">Register for MERN Stack</a>
+          </nav>
+        </div>
+      </header>
+      <article class="px-5 pb-24 pt-36 sm:px-6 lg:px-8" data-reveal>
+        <div class="mx-auto max-w-3xl">
+          <nav aria-label="Breadcrumb" class="text-sm text-white/40"><a href="index.html" class="hover:text-white">Home</a> / <a href="blog.html" class="hover:text-white">Guides</a> / CI/CD</nav>
+          <p class="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-white/40">CI/CD · CodeLaunch Technologies Engineering Team · 13 October 2026</p>
+          <h1 class="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">A safer CI/CD pipeline with GitHub Actions</h1>
+          <p class="mt-6 text-lg leading-8 text-white/55">A useful pipeline should give fast feedback on every change and make releases repeatable. Keep the first workflow small: install the locked dependencies, run the project’s tests, and make the result a required pull-request check.</p>
+
+          <div class="mt-12 space-y-8 text-base leading-8 text-white/65">
+            <section>
+              <h2 class="text-2xl font-semibold text-white">Start with a minimal pull-request check</h2>
+              <p>For a Node project with a committed <code class="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">package-lock.json</code> and an <code class="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">npm test</code> script, add <code class="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">.github/workflows/ci.yml</code>:</p>
+              <pre class="overflow-x-auto rounded-xl border border-white/10 bg-black/30 p-4 text-sm leading-6 text-white/80"><code>name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test</code></pre>
+              <p>Use a tested, supported Node version that matches your application instead of copying the example blindly. Pin third-party actions to reviewed full commit SHAs where your organization requires immutable workflow dependencies. Configure branch protection so changes cannot merge until required checks pass.</p>
+            </section>
+            <section>
+              <h2 class="text-2xl font-semibold text-white">Reduce pipeline authority</h2>
+              <p>The top-level <code class="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">contents: read</code> permission is a least-privilege starting point for a test-only workflow. Grant write permissions only to the specific job that needs them. Do not expose deployment secrets to pull requests from forks. Treat action versions, scripts, and artifacts from an untrusted change as untrusted too.</p>
+            </section>
+            <section>
+              <h2 class="text-2xl font-semibold text-white">Make a release traceable</h2>
+              <p>Build once and promote the same artifact between environments rather than rebuilding different code for each stage. Use protected GitHub environments for deployment credentials and approval gates. Prefer short-lived, federated cloud credentials over long-lived cloud keys when your provider supports them. Record the commit, artifact digest, and deployment result so a release can be traced and rolled back.</p>
+            </section>
+            <section>
+              <h2 class="text-2xl font-semibold text-white">Keep the workflow maintainable</h2>
+              <p>Cache dependencies for speed, but keep lockfiles authoritative. Add lint, type checks, security scanning, and integration tests as the project needs them; make each step report actionable errors. Review workflow changes like application code and periodically update pinned actions through a controlled process.</p>
+              <p>For a practical Express API to validate in CI, see our <a class="font-semibold text-white underline" href="blog-mern-rest-api-tutorial.html">MERN REST API tutorial</a>. Learn about our <a class="font-semibold text-white underline" data-conversion-event="blog_to_service_click" href="index.html#service-cloud-devops">cloud and DevOps services</a>.</p>
+            </section>
+          </div>
+          <aside class="mt-12 rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+            <h2 class="text-lg font-semibold">Improving delivery reliability?</h2>
+            <p class="mt-2 text-sm leading-6 text-white/50">Review your build, test, release, and rollback process with our engineering team.</p>
+            <a href="index.html#contact" data-conversion-event="blog_to_service_click" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/75 hover:text-white">Discuss CI/CD <i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
+          </aside>
+        </div>
+      </article>
+      <footer data-site-footer class="border-t border-white/10 px-5 py-10 sm:px-6 lg:px-8"></footer>
+    </main>
+    <script src="animations.js"></script>
+  </body>
+</html>

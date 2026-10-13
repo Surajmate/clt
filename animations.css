@@ -55,6 +55,11 @@ body header {
   background-color: var(--header-color) !important;
 }
 
+body #mobile-menu {
+  border-color: var(--border-color) !important;
+  background-color: var(--surface) !important;
+}
+
 body footer {
   border-color: var(--border-color) !important;
   background-color: var(--surface) !important;
@@ -293,6 +298,42 @@ html[data-theme="light"] #technology .tag {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.floating-whatsapp {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 4.75rem;
+  z-index: 59;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 9999px;
+  background: #128c7e;
+  padding: .7rem 1rem;
+  color: #fff;
+  font-size: .875rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.floating-whatsapp:hover {
+  background: #0f766e;
+  transform: translateY(-2px);
+}
+
+.floating-whatsapp:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.floating-whatsapp svg {
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .landing-main > section:not(#home) {

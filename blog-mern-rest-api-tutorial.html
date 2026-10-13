@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      try {
+        var savedTheme = localStorage.getItem("clt-theme");
+        if (["dark", "light", "colorful"].includes(savedTheme)) {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (error) {
+        console.warn("Theme preference could not be restored.", error);
+      }
+    </script>
+    <meta name="theme-color" content="#050816">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="CodeLaunch Technologies">
+    <meta name="description" content="Build the Express API layer of a MERN application with JSON parsing, input validation, clear HTTP responses, and a safe path toward MongoDB persistence.">
+    <link rel="canonical" href="https://www.codelaunchtechnologies.com/blog-mern-rest-api-tutorial.html">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+    <link rel="stylesheet" href="animations.css">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:site_name" content="CodeLaunch Technologies">
+    <meta property="og:title" content="Build a small, validated REST API with Express">
+    <meta property="og:description" content="A beginner-friendly MERN server tutorial with input validation and clear HTTP responses.">
+    <meta property="og:url" content="https://www.codelaunchtechnologies.com/blog-mern-rest-api-tutorial.html">
+    <meta property="og:image" content="https://www.codelaunchtechnologies.com/logo.png">
+    <meta property="og:image:alt" content="CodeLaunch Technologies logo">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Build a small, validated REST API with Express">
+    <meta name="twitter:description" content="A beginner-friendly MERN server tutorial with input validation and clear HTTP responses.">
+    <meta name="twitter:image" content="https://www.codelaunchtechnologies.com/logo.png">
+    <title>MERN Stack Tutorial: Express REST API | CodeLaunch Technologies</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Build a small, validated REST API with Express",
+        "description": "A beginner tutorial for the Express API layer of a MERN application.",
+        "datePublished": "2026-10-13",
+        "dateModified": "2026-10-13",
+        "author": {"@type": "Organization", "name": "CodeLaunch Technologies", "url": "https://www.codelaunchtechnologies.com/"},
+        "publisher": {"@type": "Organization", "name": "CodeLaunch Technologies", "url": "https://www.codelaunchtechnologies.com/"},
+        "mainEntityOfPage": "https://www.codelaunchtechnologies.com/blog-mern-rest-api-tutorial.html",
+        "inLanguage": "en-IN"
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-[#050816] text-white">
+    <main class="min-h-screen overflow-x-hidden bg-[#050816] text-white">
+      <header class="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#050816]/85 backdrop-blur-xl">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
+          <a href="index.html#home" class="flex shrink-0 items-center gap-3" aria-label="CodeLaunch Technologies home">
+            <img src="logo.png" alt="CodeLaunch Technologies" class="h-10 w-10 rounded-xl object-cover">
+            <span class="text-sm font-semibold">Codelaunch Technologies</span>
+          </a>
+          <nav aria-label="Main navigation" class="hidden items-center gap-3 text-sm xl:flex">
+            <a href="index.html#solutions" class="text-white/70 transition hover:text-white">Solutions</a>
+            <a href="index.html#services" class="text-white/70 transition hover:text-white">Services</a>
+            <a href="index.html#team" class="text-white/70 transition hover:text-white">Team</a>
+            <a href="careers.html" class="text-white/70 transition hover:text-white">Careers</a>
+            <a href="blog.html" class="text-white/70 transition hover:text-white">Guides</a>
+            <label class="theme-control inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 py-2 text-white/70">
+              <i data-lucide="palette" class="h-4 w-4"></i>
+              <select data-theme-select aria-label="Choose color theme" class="theme-select max-w-[88px] bg-transparent text-xs outline-none">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="colorful">Colorful</option>
+              </select>
+            </label>
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer" data-conversion-event="course_registration_click" class="whitespace-nowrap rounded-lg bg-white px-3 py-2 text-xs font-semibold text-black transition hover:bg-white/90">Register for MERN Stack</a>
+          </nav>
+          <button type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" onclick="toggleMobileMenu()" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 xl:hidden">
+            <i id="mobile-menu-icon" data-lucide="menu" class="h-5 w-5"></i>
+          </button>
+        </div>
+        <div id="mobile-menu" class="hidden border-t border-white/10 bg-[#050816] xl:hidden">
+          <nav aria-label="Mobile navigation" class="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-6">
+            <a href="index.html#solutions" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Solutions</a>
+            <a href="index.html#services" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Services</a>
+            <a href="index.html#team" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Team</a>
+            <a href="careers.html" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Careers</a>
+            <a href="blog.html" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Engineering guides</a>
+            <a href="index.html#contact" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Contact</a>
+            <label class="theme-control mx-3 my-2 inline-flex items-center gap-2 self-start rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white/70">
+              <i data-lucide="palette" class="h-4 w-4"></i>
+              <select data-theme-select aria-label="Choose color theme" class="theme-select bg-transparent outline-none">
+                <option value="dark">Dark theme</option>
+                <option value="light">Light theme</option>
+                <option value="colorful">Colorful theme</option>
+              </select>
+            </label>
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer" data-conversion-event="course_registration_click" class="mt-2 rounded-lg bg-white px-4 py-3 text-center text-sm font-semibold text-black transition hover:bg-white/90">Register for MERN Stack</a>
+          </nav>
+        </div>
+      </header>
+      <article class="px-5 pb-24 pt-36 sm:px-6 lg:px-8" data-reveal>
+        <div class="mx-auto max-w-3xl">
+          <nav aria-label="Breadcrumb" class="text-sm text-white/40"><a href="index.html" class="hover:text-white">Home</a> / <a href="blog.html" class="hover:text-white">Guides</a> / MERN tutorial</nav>
+          <p class="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-white/40">MERN tutorial · CodeLaunch Technologies Engineering Team · 13 October 2026</p>
+          <h1 class="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">Build a small, validated REST API with Express</h1>
+          <p class="mt-6 text-lg leading-8 text-white/55">This walkthrough creates one endpoint for the server side of a MERN app. It demonstrates request parsing and validation before persistence; it is a learning example, not a production-ready service.</p>
+
+          <div class="mt-12 space-y-8 text-base leading-8 text-white/65">
+            <section>
+              <h2 class="text-2xl font-semibold text-white">1. Create the project</h2>
+              <p>Use a supported Node.js LTS release, initialize an npm project, and install Express. Add a start script such as <code class="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">node server.js</code> to <code class="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">package.json</code>. Commit the generated lockfile so the team installs the same dependency versions.</p>
+              <pre class="overflow-x-auto rounded-xl border border-white/10 bg-black/30 p-4 text-sm leading-6 text-white/80"><code>npm init -y
+npm install express</code></pre>
+            </section>
+            <section>
+              <h2 class="text-2xl font-semibold text-white">2. Add a small, validated endpoint</h2>
+              <p>Create <code class="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">server.js</code>. Bound the JSON body size and validate values before using them. This in-memory example deliberately does not store data in MongoDB; the next step explains how to replace that part.</p>
+              <pre class="overflow-x-auto rounded-xl border border-white/10 bg-black/30 p-4 text-sm leading-6 text-white/80"><code>import express from "express";
+import { randomUUID } from "node:crypto";
+
+const app = express();
+app.use(express.json({ limit: "10kb" }));
+
+app.post("/api/projects", (req, res) =&gt; {
+  const name =
+    typeof req.body?.name === "string" ? req.body.name.trim() : "";
+
+  if (!name || name.length &gt; 120) {
+    return res.status(400).json({ error: "A valid project name is required." });
+  }
+
+  return res.status(201).json({
+    project: { id: randomUUID(), name }
+  });
+});
+
+const port = Number(process.env.PORT) || 3000;
+app.listen(port, () =&gt; console.log(`API listening on ${port}`));</code></pre>
+              <p>Because the example uses ES module imports, set <code class="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">"type": "module"</code> in <code class="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">package.json</code>. Test it with a JSON POST to <code class="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">/api/projects</code> containing a non-empty <code class="rounded bg-white/10 px-1.5 py-0.5 text-sm text-white">name</code>. An invalid or missing name should receive HTTP 400; a valid request should receive HTTP 201.</p>
+            </section>
+            <section>
+              <h2 class="text-2xl font-semibold text-white">3. Connect persistence thoughtfully</h2>
+              <p>In a MERN application, replace the generated in-memory result with a MongoDB model and an awaited insert. Validate again at the persistence boundary, handle duplicate or unavailable database conditions explicitly, and never return database credentials or internal exception details to the client. Put connection settings in environment configuration backed by a secret manager in deployed environments.</p>
+              <p>Before exposing real user data, add authentication, record-level authorization, automated tests, and request logging that excludes secrets and private payloads. The API layer is only one part of MERN: a React client should call this endpoint and handle loading, success, and error states.</p>
+            </section>
+            <section>
+              <h2 class="text-2xl font-semibold text-white">4. Keep improving the example</h2>
+              <p>Add schema-based request validation, a centralized error handler, health checks, and tests for missing, malformed, and valid requests. Then make a small change and confirm the tests run in CI. Learn about our <a class="font-semibold text-white underline" data-conversion-event="blog_to_service_click" href="index.html#service-product-engineering">product engineering services</a> or see our <a class="font-semibold text-white underline" href="blog-github-actions-cicd.html">GitHub Actions CI/CD guide</a>.</p>
+            </section>
+          </div>
+          <aside class="mt-12 rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+            <h2 class="text-lg font-semibold">Looking to build your MERN skills?</h2>
+            <p class="mt-2 text-sm leading-6 text-white/50">Explore the MERN Stack course registration and learning opportunities.</p>
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer" data-conversion-event="course_registration_click" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/75 hover:text-white">View course registration <i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
+          </aside>
+        </div>
+      </article>
+      <footer data-site-footer class="border-t border-white/10 px-5 py-10 sm:px-6 lg:px-8"></footer>
+    </main>
+    <script src="animations.js"></script>
+  </body>
+</html>

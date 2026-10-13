@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      try {
+        var savedTheme = localStorage.getItem("clt-theme");
+        if (["dark", "light", "colorful"].includes(savedTheme)) {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (error) {
+        console.warn("Theme preference could not be restored.", error);
+      }
+    </script>
+    <meta name="theme-color" content="#050816">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="CodeLaunch Technologies">
+    <meta name="description" content="Learn where AI agents can help business workflows, when to prefer deterministic automation, and how to add approvals, restricted tools, and evaluations.">
+    <link rel="canonical" href="https://www.codelaunchtechnologies.com/blog-ai-agents-automation.html">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+    <link rel="stylesheet" href="animations.css">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:site_name" content="CodeLaunch Technologies">
+    <meta property="og:title" content="Where AI agents fit in business process automation">
+    <meta property="og:description" content="Choose a suitable level of AI autonomy, add approval gates, and evaluate outcomes before production.">
+    <meta property="og:url" content="https://www.codelaunchtechnologies.com/blog-ai-agents-automation.html">
+    <meta property="og:image" content="https://www.codelaunchtechnologies.com/logo.png">
+    <meta property="og:image:alt" content="CodeLaunch Technologies logo">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Where AI agents fit in business process automation">
+    <meta name="twitter:description" content="Choose a suitable level of AI autonomy, add approval gates, and evaluate outcomes before production.">
+    <meta name="twitter:image" content="https://www.codelaunchtechnologies.com/logo.png">
+    <title>AI Agents for Business Automation | CodeLaunch Technologies</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Where AI agents fit in business process automation",
+        "description": "A practical guide to using AI agents in business workflows.",
+        "datePublished": "2026-10-13",
+        "dateModified": "2026-10-13",
+        "author": {"@type": "Organization", "name": "CodeLaunch Technologies", "url": "https://www.codelaunchtechnologies.com/"},
+        "publisher": {"@type": "Organization", "name": "CodeLaunch Technologies", "url": "https://www.codelaunchtechnologies.com/"},
+        "mainEntityOfPage": "https://www.codelaunchtechnologies.com/blog-ai-agents-automation.html",
+        "inLanguage": "en-IN"
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-[#050816] text-white">
+    <main class="min-h-screen overflow-x-hidden bg-[#050816] text-white">
+      <header class="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#050816]/85 backdrop-blur-xl">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
+          <a href="index.html#home" class="flex shrink-0 items-center gap-3" aria-label="CodeLaunch Technologies home">
+            <img src="logo.png" alt="CodeLaunch Technologies" class="h-10 w-10 rounded-xl object-cover">
+            <span class="text-sm font-semibold">Codelaunch Technologies</span>
+          </a>
+          <nav aria-label="Main navigation" class="hidden items-center gap-3 text-sm xl:flex">
+            <a href="index.html#solutions" class="text-white/70 transition hover:text-white">Solutions</a>
+            <a href="index.html#services" class="text-white/70 transition hover:text-white">Services</a>
+            <a href="index.html#team" class="text-white/70 transition hover:text-white">Team</a>
+            <a href="careers.html" class="text-white/70 transition hover:text-white">Careers</a>
+            <a href="blog.html" class="text-white/70 transition hover:text-white">Guides</a>
+            <label class="theme-control inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 py-2 text-white/70">
+              <i data-lucide="palette" class="h-4 w-4"></i>
+              <select data-theme-select aria-label="Choose color theme" class="theme-select max-w-[88px] bg-transparent text-xs outline-none">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="colorful">Colorful</option>
+              </select>
+            </label>
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer" data-conversion-event="course_registration_click" class="whitespace-nowrap rounded-lg bg-white px-3 py-2 text-xs font-semibold text-black transition hover:bg-white/90">Register for MERN Stack</a>
+          </nav>
+          <button type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" onclick="toggleMobileMenu()" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 xl:hidden">
+            <i id="mobile-menu-icon" data-lucide="menu" class="h-5 w-5"></i>
+          </button>
+        </div>
+        <div id="mobile-menu" class="hidden border-t border-white/10 bg-[#050816] xl:hidden">
+          <nav aria-label="Mobile navigation" class="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-6">
+            <a href="index.html#solutions" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Solutions</a>
+            <a href="index.html#services" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Services</a>
+            <a href="index.html#team" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Team</a>
+            <a href="careers.html" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Careers</a>
+            <a href="blog.html" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Engineering guides</a>
+            <a href="index.html#contact" class="rounded-lg px-3 py-3 text-sm text-white/70 hover:bg-white/5 hover:text-white">Contact</a>
+            <label class="theme-control mx-3 my-2 inline-flex items-center gap-2 self-start rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white/70">
+              <i data-lucide="palette" class="h-4 w-4"></i>
+              <select data-theme-select aria-label="Choose color theme" class="theme-select bg-transparent outline-none">
+                <option value="dark">Dark theme</option>
+                <option value="light">Light theme</option>
+                <option value="colorful">Colorful theme</option>
+              </select>
+            </label>
+            <a href="https://forms.gle/b98uGYGLHvitqMXj8" target="_blank" rel="noopener noreferrer" data-conversion-event="course_registration_click" class="mt-2 rounded-lg bg-white px-4 py-3 text-center text-sm font-semibold text-black transition hover:bg-white/90">Register for MERN Stack</a>
+          </nav>
+        </div>
+      </header>
+      <article class="px-5 pb-24 pt-36 sm:px-6 lg:px-8" data-reveal>
+        <div class="mx-auto max-w-3xl">
+          <nav aria-label="Breadcrumb" class="text-sm text-white/40"><a href="index.html" class="hover:text-white">Home</a> / <a href="blog.html" class="hover:text-white">Guides</a> / AI automation</nav>
+          <p class="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-white/40">AI automation · CodeLaunch Technologies Engineering Team · 13 October 2026</p>
+          <h1 class="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">Where AI agents fit in business process automation</h1>
+          <p class="mt-6 text-lg leading-8 text-white/55">An agent can interpret context and choose among permitted actions, but that flexibility is not always an advantage. Start by deciding which steps truly need judgment and which should remain predictable software.</p>
+
+          <div class="mt-12 space-y-8 text-base leading-8 text-white/65">
+            <section>
+              <h2 class="text-2xl font-semibold text-white">Choose the least complex tool that works</h2>
+              <p>Use ordinary application code for stable rules, calculations, and state transitions. Use a workflow engine when a process needs durable orchestration, retries, timers, and visibility. Consider an AI model for bounded tasks such as classifying free-text requests, extracting fields from documents, or drafting a response. An agent is useful when it must select and sequence from a small set of tools based on changing context.</p>
+              <p>If every step is known in advance, adding autonomous tool selection usually adds variability without adding value.</p>
+            </section>
+            <section>
+              <h2 class="text-2xl font-semibold text-white">Put explicit limits around autonomy</h2>
+              <p>Give the agent only the tools and data required for its task. Validate tool arguments in application code, check authorization outside the model, and make consequential actions—payments, account changes, external messages, or access decisions—require a person’s approval. Use idempotency keys for retried actions and keep a record of the request, model version, tools invoked, approvals, and final result.</p>
+              <p>Retrieved documents and user-supplied text are untrusted input. They must not be able to grant the model new permissions, override system policy, or bypass server-side authorization. Keep secrets out of prompts and model-visible context.</p>
+            </section>
+            <section>
+              <h2 class="text-2xl font-semibold text-white">Design the workflow around safe failure</h2>
+              <p>A useful pattern is: accept a request, validate it, gather only authorized context, propose a structured action, validate that proposal against business rules, request approval where needed, execute through a restricted service, then report the outcome. If confidence is low, a dependency is unavailable, or validation fails, stop safely and route the task to a person instead of repeatedly improvising.</p>
+            </section>
+            <section>
+              <h2 class="text-2xl font-semibold text-white">Measure quality before expanding access</h2>
+              <p>Build an evaluation set from representative, privacy-reviewed examples. Measure task success, factuality, tool-selection accuracy, policy violations, time, and cost. Test adversarial and ambiguous inputs, not only happy paths. Log enough to investigate failures, but redact personal or confidential data and define retention. Begin in read-only or human-reviewed mode; expand autonomy only when measured performance and controls support it.</p>
+              <p>See how this fits into our <a class="font-semibold text-white underline" href="index.html#aidlc">AI development lifecycle</a> or explore <a class="font-semibold text-white underline" data-conversion-event="blog_to_service_click" href="index.html#service-ai-systems">AI and intelligent systems services</a>.</p>
+            </section>
+          </div>
+          <aside class="mt-12 rounded-2xl border border-white/10 bg-white/[0.025] p-6">
+            <h2 class="text-lg font-semibold">Considering AI for a workflow?</h2>
+            <p class="mt-2 text-sm leading-6 text-white/50">Start with a well-defined process, the data it can use, and the decisions that need human approval.</p>
+            <a href="index.html#contact" data-conversion-event="blog_to_service_click" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/75 hover:text-white">Discuss an AI project <i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
+          </aside>
+        </div>
+      </article>
+      <footer data-site-footer class="border-t border-white/10 px-5 py-10 sm:px-6 lg:px-8"></footer>
+    </main>
+    <script src="animations.js"></script>
+  </body>
+</html>

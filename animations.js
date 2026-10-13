@@ -23,7 +23,15 @@
     }
   }
 
-  var initialTheme = document.documentElement.dataset.theme || "dark";
+  var initialTheme = document.documentElement.dataset.theme;
+  if (!initialTheme) {
+    try {
+      initialTheme = localStorage.getItem("clt-theme") || "dark";
+    } catch (error) {
+      console.warn("Theme preference could not be restored.", error);
+      initialTheme = "dark";
+    }
+  }
   applyTheme(initialTheme, false);
 
   document.querySelectorAll("[data-theme-select]").forEach(function (select) {
@@ -42,13 +50,15 @@
   window.toggleMobileMenu = function () {
     var menu = document.getElementById("mobile-menu");
     var icon = document.getElementById("mobile-menu-icon");
+    var menuButton = document.querySelector('[aria-controls="mobile-menu"]');
     if (!menu) return;
-    menu.classList.toggle("hidden");
+    var isOpen = menu.classList.toggle("hidden") === false;
+    if (menuButton) {
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    }
     if (icon) {
-      icon.setAttribute(
-        "data-lucide",
-        menu.classList.contains("hidden") ? "menu" : "x"
-      );
+      icon.setAttribute("data-lucide", isOpen ? "x" : "menu");
       if (window.lucide) window.lucide.createIcons();
     }
   };
@@ -56,14 +66,35 @@
   window.closeMobileMenu = function () {
     var menu = document.getElementById("mobile-menu");
     var icon = document.getElementById("mobile-menu-icon");
+    var menuButton = document.querySelector('[aria-controls="mobile-menu"]');
     if (menu) menu.classList.add("hidden");
+    if (menuButton) {
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open menu");
+    }
     if (icon) icon.setAttribute("data-lucide", "menu");
     if (icon && window.lucide) window.lucide.createIcons();
   };
 
   window.openWhatsApp = function () {
+    window.trackConversion("whatsapp_click");
     window.location.assign("https://wa.me/919226283699");
   };
+
+  window.trackConversion = function (eventName, parameters) {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", eventName, parameters || {});
+    }
+  };
+
+  document.addEventListener("click", function (event) {
+    var target = event.target;
+    var trackedLink = target instanceof Element
+      ? target.closest("[data-conversion-event]")
+      : null;
+    if (!trackedLink) return;
+    window.trackConversion(trackedLink.dataset.conversionEvent);
+  });
 
   var backToTop = document.createElement("button");
   backToTop.type = "button";
@@ -101,7 +132,7 @@
             <div class="mt-5 flex items-center gap-3">
               <a href="https://www.linkedin.com/company/135757823" target="_blank" rel="noopener noreferrer" aria-label="Codelaunch Technologies on LinkedIn" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-sm font-bold text-white/55 transition hover:bg-white/10 hover:text-white">in</a>
               <button type="button" onclick="openWhatsApp()" aria-label="Contact Codelaunch on WhatsApp" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/55 transition hover:bg-white/10 hover:text-white"><i data-lucide="message-circle" class="h-[17px] w-[17px]"></i></button>
-              <a href="mailto:info@codelaunchtechnologies.com" aria-label="Email Codelaunch Technologies" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/55 transition hover:bg-white/10 hover:text-white"><i data-lucide="mail" class="h-[17px] w-[17px]"></i></a>
+              <a href="mailto:info@codelaunchtechnologies.com" data-conversion-event="email_contact_click" aria-label="Email Codelaunch Technologies" class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-white/55 transition hover:bg-white/10 hover:text-white"><i data-lucide="mail" class="h-[17px] w-[17px]"></i></a>
             </div>
           </div>
           <div>
@@ -120,13 +151,15 @@
               <a class="block transition hover:text-white" href="index.html#solutions">Solutions</a>
               <a class="block transition hover:text-white" href="index.html#aidlc">AIDLC</a>
               <a class="block transition hover:text-white" href="index.html#technology">Technology</a>
+              <a class="block transition hover:text-white" href="blog.html">Engineering guides</a>
+              <a class="block transition hover:text-white" href="project-planning-checklist.txt" download>Project checklist</a>
             </div>
           </div>
           <div>
             <h2 class="mb-4 text-xs font-semibold uppercase tracking-widest text-white/35">Contact</h2>
             <div class="space-y-3 text-sm text-white/50">
-              <a class="flex items-center gap-2 transition hover:text-white" href="mailto:info@codelaunchtechnologies.com"><i data-lucide="mail" class="h-4 w-4"></i>info@codelaunchtechnologies.com</a>
-              <a class="flex items-center gap-2 transition hover:text-white" href="tel:+919226283699"><i data-lucide="phone" class="h-4 w-4"></i>+91 9226283699</a>
+              <a class="flex items-center gap-2 transition hover:text-white" href="mailto:info@codelaunchtechnologies.com" data-conversion-event="email_contact_click"><i data-lucide="mail" class="h-4 w-4"></i>info@codelaunchtechnologies.com</a>
+              <a class="flex items-center gap-2 transition hover:text-white" href="tel:+919226283699" data-conversion-event="phone_call_click"><i data-lucide="phone" class="h-4 w-4"></i>+91 9226283699</a>
               <div class="flex items-center gap-2"><i data-lucide="map-pin" class="h-4 w-4"></i>Pune, Maharashtra, India</div>
               <button type="button" onclick="openWhatsApp()" class="flex items-center gap-2 transition hover:text-white"><i data-lucide="message-circle" class="h-4 w-4"></i>Chat with us on WhatsApp</button>
             </div>
@@ -139,6 +172,18 @@
       </div>`;
     if (window.lucide) window.lucide.createIcons();
   }
+
+  var whatsAppLink = document.createElement("a");
+  whatsAppLink.className = "floating-whatsapp";
+  whatsAppLink.href = "https://wa.me/919226283699";
+  whatsAppLink.target = "_blank";
+  whatsAppLink.rel = "noopener noreferrer";
+  whatsAppLink.dataset.conversionEvent = "whatsapp_click";
+  whatsAppLink.setAttribute("aria-label", "Chat with CodeLaunch Technologies on WhatsApp");
+  whatsAppLink.dataset.conversionEvent = "whatsapp_click";
+  whatsAppLink.innerHTML = '<i data-lucide="message-circle" aria-hidden="true"></i><span>Chat with us</span>';
+  document.body.appendChild(whatsAppLink);
+  if (window.lucide) window.lucide.createIcons();
 
   var heroVisual = document.querySelector(".hero-visual");
   if (heroVisual) {
