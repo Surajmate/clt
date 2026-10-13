@@ -110,7 +110,7 @@
               <a class="block transition hover:text-white" href="index.html#about">About</a>
               <a class="block transition hover:text-white" href="index.html#team">Our team</a>
               <a class="block transition hover:text-white" href="careers.html">Careers</a>
-              // <a class="block transition hover:text-white" href="index.html#work">Our work</a>
+              <!-- <a class="block transition hover:text-white" href="index.html#work">Our work</a> -->
             </div>
           </div>
           <div>
